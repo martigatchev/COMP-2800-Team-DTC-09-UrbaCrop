@@ -11,12 +11,13 @@
 
 .card {
     margin: 0 auto;
-    width: 50%;
+    width: 20%;
     margin-bottom: 20px;
 }
 
 #main_div {
     text-align: center;
+    border: 5px solid red;
 }
 
 
