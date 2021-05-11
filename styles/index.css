@@ -1,0 +1,32 @@
+/* CSS for swipe • swipe • collection.html */
+
+#bottom_grid {
+    background-color: #e2efdd;
+    position:fixed;
+    bottom: 0;
+    height: 15%;
+}
+
+.row {
+    height: 100%;
+}
+
+
+.col {
+    border: 1px solid green;
+    position: relative;
+}
+
+.col_content {
+    border: 1px solid green;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+    text-align: center;
+    color: white;
+}
+
