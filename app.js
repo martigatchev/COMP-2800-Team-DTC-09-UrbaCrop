@@ -7,8 +7,12 @@ let app = express();
     app.set("view engine", "ejs");
     
 let PORT = process.env.PORT || 3000;
-app.listen(PORT);
 
-app.get("/", (req, res)=> res.render("pages/index"));
+app.listen(PORT, function() {
+    console.log("Running on port " + PORT);
+    alert(console.log("Running on port " + PORT));
+});
+
+app.get("/", (req, res)=> res.render("index"));
 
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
