@@ -10,7 +10,6 @@ let PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function() {
     console.log("Running on port " + PORT);
-    alert(console.log("Running on port " + PORT));
 });
 
 app.get("/", (req, res)=> res.render("index"));
