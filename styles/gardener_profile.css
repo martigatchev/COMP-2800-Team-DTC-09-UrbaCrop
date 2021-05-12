@@ -20,6 +20,21 @@
     border: 5px solid red;
 }
 
+#tab_section {
+    background-color: #eef5eb;
+    border: 5px solid blue;
+}
+
+.tab_col {
+    border: 5px solid yellow;
+}
+
+.card {
+    width: 90%;
+    border: 5px solid orange;
+}
+
+
 
 /* ----- MENU SKELETON ----- */
 
@@ -35,7 +50,7 @@
 }
 
 
-.col {
+.bot_menu_col {
     border: 1px solid green;
     position: relative;
 }
