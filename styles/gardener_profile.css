@@ -111,10 +111,6 @@
     color: #1B490A;
 }
 
-
-/* user-info
-name-title" */
-
 .user-info {
     display: flex;
     flex-direction: row;
