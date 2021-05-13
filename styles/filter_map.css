@@ -1,0 +1,21 @@
+.filter-menu {
+  position: relative;
+  bottom: 700px;
+  right: -270px;
+  border-radius: 15%;
+  height: 80px;
+  width: 100px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #e2efdd;
+
+}
+
+.filter-menu button {
+  width: 48%;
+  max-height: 60px;
+  background-color: #e2efdd;
+  border: none;
+}
