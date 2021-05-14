@@ -26,19 +26,6 @@
 
       <img id="topnav-logo" class="navbar-brand" src="images/leaf_logo.svg" alt="Green leaf logo">
 
-      <!--<div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                  <li class="nav-item">
-                      <a class="nav-link" href="./dummy.html">User Profile</a>
-                      <a class="nav-link" href="./dummy.html">Your Applications</a>
-                      <a class="nav-link" href="./dummy.html">Favourites</a>
-                      <a class="nav-link" href="./dummy.html">Farming Guidelines</a>
-                      <a class="nav-link" href="./dummy.html">Settings</a>
-                      <a class="nav-link" href="./dummy.html">Logout</a>
-                  </li>
-              </ul>
-          </div>-->
-
     </div>
   </nav>
 
@@ -80,18 +67,17 @@
     </div>
   </div>
 
-  <iframe src="https://opendata.vancouver.ca/explore/embed/dataset/community-gardens-and-food-trees/map/?sort=name&location=13,49.26243,-123.09794&static=false&datasetcard=false&scrollWheelZoom=false" width="100%" height="750px" frameborder="0"></iframe>
-
   <div class="filter-menu">
-    <button type="button" data-bs-toggle="modal" data-bs-target="#filterModal">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <img src="images/Filter.svg" alt="Filter Icon">
     </button>
-    <button>
+    <button type="button" id="list_toggle_button">
       <img src="images/See as list.svg" alt="See as list Icon">
     </button>
   </div>
 
-  <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -99,12 +85,91 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <label for="customRange2" class="form-label">Distance</label>
-          <input type="range" class="form-range" min="0" max="10" id="customRange2">
+          <label for="customRange2" class="form-label">Distance (1-10km):</label>
+          <input type="range" class="form-range" min="0" max="5" id="customRange2">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Greens
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+            <label class="form-check-label" for="flexCheckChecked">
+              Vegetables
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+            <label class="form-check-label" for="flexCheckChecked">
+              Flowers
+            </label>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Map Result as a List-->
+  <div class="accordion invisible" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          1. Kingscrest Park Community Garden
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+        <div class="accordion-body">
+          MAPID: FA081<br>
+          YEAR_CREATED: 2014<br>
+          MERGED_ADDRESS: 4150 Knight St, Vancouver, BC<br>
+          NUMBER_OF_PLOTS: 20<br>
+          JURISDICTION: Park Board<br>
+          STEWARD_OR_MANAGING_ORGANIZATION: Cedar Cottage Food Network Society<br>
+          PUBLIC_E_MAIL: kingcrestgarden@gmail.com<br>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          2. South Vancouver Youth Centre Day Program
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+        <div class="accordion-body">
+          MAPID: FA125<br>
+          YEAR_CREATED: 2008<br>
+          MERGED_ADDRESS: 4866 Fraser St, Vancouver, BC<br>
+          NUMBER_OF_PLOTS: 3<br>
+          JURISDICTION: Private<br>
+          STEWARD_OR_MANAGING_ORGANIZATION: South Van Youth Ctr Day Program<br>
+          Geo Local Area: Kensington-Cedar Cottage<br>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+          3. Frog Hollow Neighbourhood House Garden 1
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+        <div class="accordion-body">
+          MAPID:FA060<br>
+          YEAR_CREATED: 2007<br>
+          MERGED_ADDRESS: 2703 E 1st  Av, Vancouver, BC<br>
+          NUMBER_OF_PLOTS: 5<br>
+          JURISDICTION: Private
+          STEWARD_OR_MANAGING_ORGANIZATION: Frog Hollow Neighbourhood House<br>
+          PUBLIC_E_MAIL: eva@froghollow.bc.ca<br>
+          WEBSITE: http://www.froghollow.bc.ca<br>
+          Geo Local Area: Hastings-Sunrise<br>
         </div>
       </div>
     </div>
@@ -136,6 +201,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
     crossorigin="anonymous"></script>
+  <script src="scripts/garden_map.js"></script>
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--
