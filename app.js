@@ -1,5 +1,6 @@
 const { render } = require("ejs");
 const express = require("express");
+const favicon = require('serve-favicon');
 
 let app = express();
     app.use(express.urlencoded({extended: true}));
