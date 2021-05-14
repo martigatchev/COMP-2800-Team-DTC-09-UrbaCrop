@@ -41,3 +41,55 @@ html {
 .invisible {
   visibility: hidden !important;
 }
+
+/* ----- MENU SKELETON ----- */
+
+.quick-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.quick-nav a {
+  color: #1B490A;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-info h3 {
+  font-size: 20px;
+}
+
+.user-info h4 {
+  font-size: 15px;
+}
+
+.user-info img {
+  border-radius: 100px;
+}
+
+#user-pro-pic {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+
+
+.col:hover {
+  background-color: #bcd4b6;
+}
+
+.menu-option {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.menu-option:hover {
+  background-color: #eef5eb;
+}
