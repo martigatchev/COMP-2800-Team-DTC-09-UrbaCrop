@@ -5,7 +5,7 @@ let app = express();
     app.use(express.urlencoded({extended: true}));
     app.use("/styles", express.static("styles"));
     app.use("/images", express.static("images"));
-    app.use('/favicon_package', express.static('favicon.ico'));
+    app.use(express.favicon('./public/favicon_package/favicon.ico'));
     app.set("view engine", "ejs");
 
     
