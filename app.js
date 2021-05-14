@@ -3,7 +3,7 @@ const express = require("express");
 
 let app = express();
     app.use(express.urlencoded({extended: true}));
-    app.use(express.static("public"));
+    app.use(express.static("public/styles"));
     app.set("view engine", "ejs");
     
 let PORT = process.env.PORT || 3000;
