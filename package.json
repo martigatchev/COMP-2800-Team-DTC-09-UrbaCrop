@@ -6,7 +6,6 @@
   "dependencies": {
     "ejs": "^3.1.2",
     "express": "^4.17.1",
-    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {},
   "scripts": {
