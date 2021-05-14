@@ -3,8 +3,9 @@ const express = require("express");
 
 let app = express();
     app.use(express.urlencoded({extended: true}));
-    app.use(express.static("public/styles"));
+    app.use("/styles", express.static("styles"));
     app.use("/images", express.static("images"));
+    app.use('/favicon_package', express.static('favicon_package'));
     app.set("view engine", "ejs");
 
     
