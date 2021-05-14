@@ -34,17 +34,22 @@
 .tab_col_content {
     font-size: 22px;
     padding-bottom: 3px;
+    padding-top: 10px;
 }
 
+.tab_col {
+    text-align: center;
+}
 
 .card {
     width: 90%;
 }
 
 .selection_rectangle {
-    width: 100%;
+    width: 90%;
     height: 8px;
     background-color: green;
+    margin: auto;
 }
 
 /* ----- MENU SKELETON ----- */
@@ -60,9 +65,9 @@
     height: 100%;
 }
 
-
 .col {
     position: relative;
+    padding: 5px;
 }
 
 .col_content {
@@ -77,8 +82,7 @@
 
 .col:hover {
     background-color: #bcd4b6;
-  }
-
+}
 
 .navbar-fixed-top {
     height: 7%;
@@ -100,7 +104,7 @@
 .quick-nav {
     display: flex;
     flex-direction: column;
-    margin-top: 10%;
+    margin-top: 20px;
 }
 
 .quick-nav a {
@@ -133,9 +137,14 @@
 .menu-option {
     display: flex;
     flex-direction: row;
-    padding-top: 8%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.menu-option:hover {
+    background-color: #eef5eb;
 }
 
 .menu-option img {
-    padding-right: 5%;
+    padding-right: 15px;
 }

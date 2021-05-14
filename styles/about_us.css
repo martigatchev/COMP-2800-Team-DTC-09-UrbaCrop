@@ -11,7 +11,7 @@
 
 .card {
     margin: 0 auto;
-    width: 50%;
+    width: 75%;
     margin-bottom: 20px;
 }
 
@@ -26,29 +26,93 @@
     background-color: #e2efdd;
     position:fixed;
     bottom: 0;
-    height: 15%;
+    height: 7%;
 }
 
 .row {
     height: 100%;
 }
 
-
 .col {
-    border: 1px solid green;
     position: relative;
+    padding: 5px;
 }
 
 .col_content {
-    border: 1px solid green;
     width: 50px;
     height: 50px;
-    background-color: green;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -25px 0 0 -25px;
+    margin: -12px 0 0 -25px;
     text-align: center;
-    color: white;
 }
 
+.col:hover {
+    background-color: #bcd4b6;
+}
+
+.navbar-fixed-top {
+    height: 7%;
+}
+
+#navbar-toggler {
+    border: none;
+    background-color: #e2efdd;
+}
+
+#topnav-logo {
+    float: center;
+}
+
+.offcanvas {
+    width: 70%;
+}
+
+.quick-nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.quick-nav a {
+    color: #1B490A;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-info h3 {
+    font-size: 20px;
+}
+
+.user-info h4 {
+    font-size: 15px;
+}
+
+.user-info img {
+    border-radius: 100px;
+}
+
+#user-pro-pic {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.menu-option {
+    display: flex;
+    flex-direction: row;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.menu-option:hover {
+    background-color: #eef5eb;
+}
+
+.menu-option img {
+    padding-right: 15px;
+}
