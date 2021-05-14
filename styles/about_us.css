@@ -19,6 +19,15 @@
     text-align: center;
 }
 
+#main_div img {
+    width: 65%;
+    margin: auto;
+}
+
+#logo_image {
+    width: 50%;
+}
+
 
 /* ----- MENU SKELETON ----- */
 
