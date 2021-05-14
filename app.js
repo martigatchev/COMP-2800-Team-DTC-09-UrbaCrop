@@ -8,7 +8,7 @@ let app = express();
     app.use("/public", express.static('public')); 
     app.use("/styles", express.static("styles"));
     app.use("/images", express.static("images"));
-    app.use(favicon(path.join(__dirname, "favicon-package", "favicon.ico")));
+    app.use(favicon(path.join("favicon-package", "favicon.ico")));
     app.set("view engine", "ejs");
 
     
