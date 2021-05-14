@@ -16,5 +16,5 @@ app.get("/", (req, res)=> res.render("index"));
 
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
 
-app.get("/about_us", (req, res)=> res.render("/about_us"));
+app.get("/about_us", (req, res)=> res.render("/about_us.html"));
 
