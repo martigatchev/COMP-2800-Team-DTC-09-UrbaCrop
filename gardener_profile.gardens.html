@@ -9,7 +9,7 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-  
+
   <link rel="stylesheet" href="./styles/gardener_profile.css">
 
   <title>UrbaCrop</title>
@@ -59,28 +59,28 @@
       </div>
       <div class=quick-nav>
         <div class="menu-option">
-            <img src="images/applications.svg" alt="Applications Icon">
-            <a href="#">Your Applications</a>
+          <img src="images/applications.svg" alt="Applications Icon">
+          <a href="#">Your Applications</a>
         </div>
         <div class="menu-option">
-            <img src="images/favorites.svg" alt="Favorites Icon">
-            <a href="#">Your Favorites</a>
+          <img src="images/favorites.svg" alt="Favorites Icon">
+          <a href="#">Your Favorites</a>
         </div>
         <div class="menu-option">
-            <img src="images/guidelines.svg" alt="Guidelines Icon">
-            <a href="#">Farming Guidelines</a>
+          <img src="images/guidelines.svg" alt="Guidelines Icon">
+          <a href="#">Farming Guidelines</a>
         </div>
         <div class="menu-option">
           <img src="images/about_us.svg" alt="About Us Icon">
           <a href="about_us.html">About Us</a>
-      </div>
-        <div class="menu-option">
-            <img src="images/settings.svg" alt="Settings Icon">
-            <a href="#">Settings</a>
         </div>
         <div class="menu-option">
-            <img src="images/logout.svg" alt="Log out Icon">
-            <a href="#">Log out</a>
+          <img src="images/settings.svg" alt="Settings Icon">
+          <a href="#">Settings</a>
+        </div>
+        <div class="menu-option">
+          <img src="images/logout.svg" alt="Log out Icon">
+          <a href="#">Log out</a>
         </div>
       </div>
     </div>
@@ -88,82 +88,103 @@
 
   <!-- Main Webpage Contents -->
 
-    <div id="main_div">
+  <div id="main_div">
 
     <div id="tab_section">
-        
-        <br>
 
-        <img src="https://via.placeholder.com/150" alt="Girl in a jacket">
-      
-        <br>
-        <br>
+      <br>
 
-        <h4>
-            Suaveman Jones
-        </h4>
-        <h5>
-            Gardener
-        </h5>
+      <img src="https://via.placeholder.com/150" alt="Girl in a jacket">
 
-        <br>
+      <br>
+      <br>
 
-        <div class="container-fluid" id="tab_grid">
-            <div class="row">
-                <div class="col tab_col">
-                    <div class="tab_col_content">
-                        Profile
-                    </div>
-                    <div class="selection_rectangle">
+      <h4>
+        Suaveman Jones
+      </h4>
+      <h5>
+        Gardener
+      </h5>
 
-                    </div>
-                </div>
-                <div class="col tab_col">
-                    <div class="tab_col_content">
-                        Gardens
-                    </div>
-                </div>
-                <div class="col tab_col">
-                    <div class="tab_col_content">
-                        Reviews
-                    </div>
-                </div>
+      <br>
+
+      <div class="container-fluid" id="tab_grid">
+        <div class="row">
+          <div class="col tab_col">
+            <div class="tab_col_content">
+              <input type="button" class="profile_button" onclick="location.href='./gardener_profile.profile.html';"
+                value="Profile" />
             </div>
+
+          </div>
+          <div class="col tab_col">
+            <div class="tab_col_content">
+              <input type="button" class="profile_button" onclick="location.href='./gardener_profile.gardens.html';"
+                value="Gardens" />
+            </div>
+            <div class="selection_rectangle"></div>
+          </div>
+          <div class="col tab_col">
+            <div class="tab_col_content">
+              <button class="profile_button">Reviews</button>
+            </div>
+          </div>
         </div>
+      </div>
 
 
     </div>
+
+    <br>
+    <br>
+
+
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Gardens</h5>
+          <p class="card-text">This card will open up and allow to add gardens.</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            Add a Garden
+          </button>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
     
+
+    <!-- Garden Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
 
-
-    <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Contact Info</h5>
-          <p class="card-text">This card will open up and have contact info here.</p>
-          <a href="#" class="btn btn-primary">Edit</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Plant Options:</h5>
-          <p class="card-text">This card will open up and have all plant options here.</p>
-          <a href="#" class="btn btn-primary">Edit</a>
-        </div>
-    </div>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-    </div>
+  </div>
 
   <!-- Bottom Nav Bar -->
 
@@ -189,18 +210,15 @@
     </div>
   </div>
 
-  <!-- Optional JavaScript; choose one of the two! -->
+  <!-- Bootstrap JavaScript -->
 
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>

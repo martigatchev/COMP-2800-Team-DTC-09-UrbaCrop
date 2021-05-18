@@ -33,12 +33,16 @@
 
 .tab_col_content {
     font-size: 22px;
-    padding-bottom: 3px;
-    padding-top: 10px;
+    /* padding-bottom: 3px;
+    padding-top: 10px; */
 }
 
-.tab_col {
+.col.tab_col {
     text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .card {
@@ -46,11 +50,25 @@
 }
 
 .selection_rectangle {
-    width: 90%;
+    width: 100%;
     height: 8px;
     background-color: green;
     margin: auto;
 }
+
+
+.profile_button {
+    background-color: #eef5eb;
+    border: #eef5eb;
+    width: 100%;
+    height: 100%;
+}
+
+.profile_button:hover {
+    background-color: #bcd4b6;
+}
+
+
 
 /* ----- MENU SKELETON ----- */
 
