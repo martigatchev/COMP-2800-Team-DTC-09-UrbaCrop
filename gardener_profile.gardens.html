@@ -94,7 +94,7 @@
 
       <br>
 
-      <img src="https://via.placeholder.com/150" alt="Girl in a jacket">
+      <img src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="profile picture" width="150" height="150">
 
       <br>
       <br>
@@ -139,20 +139,90 @@
     <br>
 
 
-    <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Gardens</h5>
-          <p class="card-text">This card will open up and allow to add gardens.</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-            Add a Garden
-          </button>
-        </div>
+    <div class="card existing_garden_card">
+      <div class="card-body">
+        <h5 class="card-title">Helsinki Garden</h5>
+
+        <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden" width="100%" data-toggle="modal" data-target="#existingGarden">
+
+        <p class="card-text">This card will open up and allow to add gardens.</p>
+
+        <!-- Button trigger modal -->
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#existingGarden">
+          Edit
+        </button>
+
+      </div>
     </div>
 
-    <!-- Button trigger modal -->
-    
 
-    <!-- Garden Modal -->
+    <div class="card new_garden_card">
+      <div class="card-body">
+        <h5 class="card-title">Gardens</h5>
+        <p class="card-text">This card will open up and allow to add gardens.</p>
+
+        <!-- Button trigger modal -->
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+          Add a Garden
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- Existing Garden Modal -->
+    <div class="modal fade" id="existingGarden" tabindex="-1" role="dialog" aria-labelledby="existingGarden"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="existingGardenTitle">Helsinki Garden</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- MODAL BODY -->
+
+          <div class="modal-body">
+
+            <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden" width="100%">
+
+            
+
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">EXISTING GARDEN</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                  else.</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Add New Garden Modal -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -163,8 +233,30 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
+          <!-- MODAL BODY -->
+
           <div class="modal-body">
-            ...
+
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                  else.</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -213,11 +305,14 @@
   <!-- Bootstrap JavaScript -->
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
 </body>
 
