@@ -1,7 +1,15 @@
 const { render } = require("ejs");
 const express = require("express");
+const mongoose = require('mongoose');
 
+let url = 'mongodb+srv://userTest:userTestPassword@cluster0.o4dh9.mongodb.net/UserTest?retryWrites=true&w=majority';
+mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
+let userInfo = require('./models/userInfo');
+let db = mongoose.connection;
 
+db.once('open', function() {
+    console.log('Connection was succesfull');
+})
 
 let app = express();
     app.use(express.urlencoded({extended: true}));
@@ -24,3 +32,9 @@ app.get("/garden_map.html", (req, res)=> res.render("garden_map"));
 app.get("/gardener_profile.html", (req, res)=> res.render("gardener_profile"));
 app.get("/gardeners_list.html", (req, res)=> res.render("gardeners_list"));
 
+/*app.get("/")
+app.post("/signup", (req, res) => {
+    console.log(req.body)
+    console.log(req.body.username)
+})
+*/
