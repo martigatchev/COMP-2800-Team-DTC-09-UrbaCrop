@@ -35,9 +35,7 @@ app.get("/gardeners_list.html", (req, res)=> res.render("gardeners_list"));
 app.get("/login", (req, res) => res.render("login"))
 app.get("/signup", (req, res) => res.render("sign_up"));
 app.post("/signup", (req, res) => {
-    console.log(req.body)
-    console.log(req.body.signupUsername)
-    console.log(req.body.signupPassword)
+    console.log(req.body)       // Remove this line at the end.
     let user = new userInfo({username: req.body.signupUsername, password: req.body.signupPassword});
     user.save({username: req.body.signupUsername, password: req.body.signupPassword})
     .then(result => {
@@ -45,5 +43,30 @@ app.post("/signup", (req, res) => {
         res.redirect('/login');
     })
     .catch(error => console.error(error))
+})
+app.post("/login", (req, res) => {
+    console.log(req.body)       // Remove this line at the end.
+    userInfo.findOne({username: req.body.loginUsername}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log('found:' + docs);
+            if (docs == null)  {
+                console.log("can't find user" + docs);
+                res.redirect('/login');
+            }
+            else {
+                if (req.body.loginPassword == docs.password) {
+                    console.log('successful login! User:' + docs.username);
+                    res.redirect('/');
+                }
+                else {
+                    console.log('Password does not match the username');
+                    res.redirect('/login');
+                }
+            }
+        }
+    })
 })
 
