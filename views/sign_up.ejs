@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/index.css">
+    
+    <title>Sign up - UrbaCrop</title>
+    <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_package/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_package/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_package/favicon-16x16.png">
+    <link rel="manifest" href="./favicon_package/site.webmanifest">
+    <link rel="mask-icon" href="./favicon_package/safari-pinned-tab.svg" color="#00a300">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-fixed-top" style="background-color: #e2efdd;">
+        <div class="container-fluid">
+    
+          <img id="topnav-logo" class="navbar-brand" src="images/leaf_logo.svg" alt="Green leaf logo">
+    
+        </div>
+      </nav>
+      
+    <div class="container py-2 px-4">
+        <h2 class="text-center mb-3 mt-3 p-3">New Account</h2>
+        <form action="/signup" method="POST" class="border border-success rounded p-3" style="background-color: #e2efdd;">
+
+            <div class="mb-3">
+                <label for="signupFirstName" class="form-label">First Name: </label>
+                <input type="text" class="form-control" id="signupFirstName" name="signupFirstName">
+            </div>
+
+            <div class="mb-3">
+                <label for="signupLastName" class="form-label">Last Name: </label>
+                <input type="text" class="form-control" id="signupLastName" name="signupLastName">
+            </div>
+            
+            <div class="mb-3">
+                <label for="signupEmail" class="form-label">Email address: </label>
+                <input type="email" class="form-control" id="signupEmail" name="signupEmail">
+            </div>
+
+            <div class="mb-3">
+                <label for="signupUsername" class="form-label">Username: </label>
+                <input type="text" class="form-control" id="signupUsername" name="signupUsername">
+            </div>
+            
+            <div class="mb-3">
+                <label for="signupPassword" class="form-label">Password: </label>
+                <input type="password" class="form-control" id="signupPassword" name="signupPassword">
+            </div>
+
+            <div class="mb-3">
+                <label for="signupConfirmPassword" class="form-label">Confirm Password: </label>
+                <input type="password" class="form-control" id="signupConfirmPassword" name="signupConfirmPassword">
+            </div>
+
+            <div class="mb-3">
+                <label for="signupPhone" class="form-label">Phone Number: </label>
+                <input type="number" class="form-control" id="signupPhone" name="signupPhone">
+            </div>
+
+            <div class="mb-3">
+                <label for="signupHouseNumber" class="form-label">House Number: </label>
+                <input type="number" class="form-control" id="signupHouseNumber" name="signupHouseNumber">
+            </div>
+            
+            <div class="mb-3">
+                <label for="signupPostalCode" class="form-label">Postal Code: </label>
+                <input type="text" class="form-control" id="signupPostalCode" name="signupPostalCode">
+            </div>
+
+            <div class="mb-3">
+                <label for="signupAddress" class="form-label">Address: </label>
+                <input type="text" class="form-control" id="signupAddress" name="signupAddress">
+            </div>
+
+            <div class="mb-4">
+                <label for="signupCity" class="form-label">City: </label>
+                <input type="text" class="form-control" id="signupCity" name="signupCity">
+            </div>
+
+            <div class="mb-4 text-center">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="Option" id="signupGardener" value="gardener">
+                    <label class="form-check-label" for="signupGardener">Gardener</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="Option" id="signupLandlord" value="landlord">
+                    <label class="form-check-label" for="signupLandlord">Landlord</label>
+                </div>
+            </div>
+
+            <div class="text-center mb-3">
+                <button type="submit" class="btn btn-success">Create Account</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+  crossorigin="anonymous"></script>
+</body>
+</html>
