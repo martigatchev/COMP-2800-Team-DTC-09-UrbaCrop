@@ -1,6 +1,49 @@
 const { render } = require("ejs");
 const express = require("express");
+const mongoose = require("mongoose");
 
+mongoose.connect('mongodb://localhost:27017/myDatabase');
+
+let User = require("./userModel");
+
+let db = mongoose.connection;
+
+db.once('open', function() {
+    console.log("Connection was successful!");
+})
+
+let user1 = new User({username:"Ryan", password:"123"});
+let user2 = new User({username:"Ben", password:"321"});
+let user3 = new User({username:"Rocko", passwnord:"123"});
+let user4 = new User({username:"Danny", password:"OH BOB SAGET"});
+let user5 = new User({username:"Tito", password:"BadMommaJamma"});
+
+
+// Here's how to save records in the DB:
+
+// user1.save().
+//     then(record => console.log(record)).
+//     catch(error => console.log(error));
+
+// user2.save().
+//     then(record => console.log(record)).
+//     catch(error => console.log(error));
+
+// user3.save().
+//     then(record => console.log(record)).
+//     catch(error => console.log(error));
+
+// user4.save().
+//     then(record => console.log(record)).
+//     catch(error => console.log(error));
+
+// user5.save().
+//     then(record => console.log(record)).
+//     catch(error => console.log(error));
+
+User.find()
+    .then(records => console.log(records)).
+    catch(error => console.log(error));
 
 
 let app = express();
