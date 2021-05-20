@@ -36,14 +36,40 @@ app.get("/login", (req, res) => res.render("login"))
 app.get("/signup", (req, res) => res.render("sign_up"));
 app.post("/signup", (req, res) => {
     console.log(req.body)       // Remove this line at the end.
-    let user = new userInfo({username: req.body.signupUsername, password: req.body.signupPassword});
-    user.save({username: req.body.signupUsername, password: req.body.signupPassword})
-    .then(result => {
-        console.log(result)
-        res.redirect('/login');
+
+    userInfo.findOne({username: req.body.signupUsername}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log('found:' + docs);
+            if (docs != null)  {
+                console.log(docs.username + ' already exists in the DB');
+                res.redirect('/signup');
+            }
+            else {
+                let user = new userInfo({firstName: req.body.signupFirstName, lastName: req.body.signupLastName, 
+                    email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
+                    phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
+                    postalCode: req.body.signupPostalCode, address: req.body.signupAddress, city: req.body.signupCity,
+                    view: req.body.signupOption});
+
+                user.save({firstName: req.body.signupFirstName, lastName: req.body.signupLastName, 
+                    email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
+                    phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
+                    postalCode: req.body.signupPostalCode, address: req.body.signupAddress, city: req.body.signupCity,
+                    view: req.body.signupOption})
+
+                .then(result => {
+                    console.log(result)
+                    res.redirect('/login');
+                })
+                .catch(error => console.error(error))
+            }
+        }
     })
-    .catch(error => console.error(error))
 })
+
 app.post("/login", (req, res) => {
     console.log(req.body)       // Remove this line at the end.
     userInfo.findOne({username: req.body.loginUsername}, (err, docs) => {
@@ -59,7 +85,12 @@ app.post("/login", (req, res) => {
             else {
                 if (req.body.loginPassword == docs.password) {
                     console.log('successful login! User:' + docs.username);
-                    res.redirect('/');
+                    if (docs.view == 'gardener') {
+                        res.redirect('/gardener_profile.html');
+                    }
+                    else {
+                        res.redirect('/gardeners_list.html');
+                    }
                 }
                 else {
                     console.log('Password does not match the username');
