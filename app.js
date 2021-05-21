@@ -28,10 +28,10 @@ app.listen(PORT, function() {
 
 app.get("/", (req, res)=> res.render("landing"));
 app.get("/about_us", (req, res)=> res.render("about_us"));
-app.get("/garden_map", (req, res)=> res.render("garden_map"));
+app.get("/garden_map.html", (req, res)=> res.render("garden_map"));
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
-app.get("/gardener_profile.garden", (req, res)=> res.render("gardener_profile.garden"));
-app.get("/gardener_profile.profile", (req, res)=> res.render("gardener_profile.profile"));
+app.get("/gardener_profile_garden", (req, res)=> res.render("gardener_profile_garden"));
+app.get("/gardener_profile_profile", (req, res)=> res.render("gardener_profile_profile"));
 app.get("/gardeners_list", (req, res)=> {
     userInfo.find({view: 'gardener'}, (err, docs) => {
         if (err) {
@@ -112,7 +112,7 @@ app.post("/login", (req, res) => {
                 if (req.body.loginPassword == docs.password) {
                     console.log('successful login! User:' + docs.username);
                     if (docs.view == 'gardener') {
-                        res.redirect('/gardener_profile');
+                        res.redirect('/gardener_profile_profile');
                     }
                     else {
                         res.redirect('/gardeners_list');
