@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="./styles/gardener_profile.css">
+
+  <title>UrbaCrop</title>
+
+  <!-- Favicon Links -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon_package/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon_package/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon_package/favicon-16x16.png">
+  <link rel="manifest" href="./favicon_package/site.webmanifest">
+  <link rel="mask-icon" href="./favicon_package/safari-pinned-tab.svg" color="#00a300">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+
+  <!-- Top Nav Bar -->
+
+  <nav class="navbar navbar-light navbar-fixed-top" style="background-color: #e2efdd;">
+    <div class="container-fluid">
+
+      <button id="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample">
+        <img src="images/See as list.svg">
+      </button>
+
+      <img id="topnav-logo" class="navbar-brand" src="images/leaf_logo.svg" alt="Green leaf logo">
+
+    </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">UrbaCrop</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="user-info">
+        <a href="gardener_profile.html">
+          <img id="user-pro-pic" src="https://via.placeholder.com/150" alt="User Profile Picture">
+          <div class="name-title">
+            <h3>Suaveman Jones</h3>
+            <h4>Gardener</h4>
+          </div>
+        </a>
+      </div>
+      <div class=quick-nav>
+        <div class="menu-option">
+            <img src="images/applications.svg" alt="Applications Icon">
+            <a href="#">Your Applications</a>
+        </div>
+        <div class="menu-option">
+            <img src="images/favorites.svg" alt="Favorites Icon">
+            <a href="#">Your Favorites</a>
+        </div>
+        <div class="menu-option">
+            <img src="images/guidelines.svg" alt="Guidelines Icon">
+            <a href="#">Farming Guidelines</a>
+        </div>
+        <div class="menu-option">
+          <img src="images/about_us.svg" alt="About Us Icon">
+          <a href="about_us.html">About Us</a>
+      </div>
+        <div class="menu-option">
+            <img src="images/settings.svg" alt="Settings Icon">
+            <a href="#">Settings</a>
+        </div>
+        <div class="menu-option">
+            <img src="images/logout.svg" alt="Log out Icon">
+            <a href="#">Log out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Webpage Contents -->
+
+    <div id="main_div">
+
+    <div id="tab_section">
+        
+        <br>
+
+        <img src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="profile picture" width="150" height="150">
+      
+        <br>
+        <br>
+
+        <h4>
+            Suaveman Jones
+        </h4>
+        <h5>
+            Gardener
+        </h5>
+
+        <br>
+
+        <div class="container-fluid" id="tab_grid">
+            <div class="row">
+                <div class="col tab_col">
+                    <div class="tab_col_content">
+                      <input type="button" class="profile_button" onclick="location.href='./gardener_profile.profile.html';" value="Profile" /> 
+                    </div>
+                    <div class="selection_rectangle">
+
+                    </div>
+                </div>
+                <div class="col tab_col">
+                    <div class="tab_col_content">
+                      <input type="button" class="profile_button" onclick="location.href='./gardener_profile.gardens.html';" value="Gardens" />
+                    </div>
+                </div>
+                <div class="col tab_col">
+                    <div class="tab_col_content">
+                      <button class="profile_button">Reviews</button>  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    
+    <br>
+    <br>
+
+
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Contact Info</h5>
+          <p class="card-text">This card will open up and have contact info here.</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            Edit
+          </button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Plant Options:</h5>
+          <p class="card-text">This card will open up and have all plant options here.</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            Edit
+          </button>
+        </div>
+    </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
+
+
+    <!-- Garden Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+          <!-- MODAL BODY -->
+
+          <div class="modal-body">
+            
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Bottom Nav Bar -->
+
+  <div class="container-fluid" id="bottom_grid">
+    <div class="row">
+      <div class="col">
+        <div class="col_content">
+          <img src="images/Home.svg">
+        </div>
+      </div>
+      <div class="col">
+        <a href="garden_map.html">
+          <div class="col_content">
+            <img src="images/Discovery.svg">
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <div class="col_content">
+          <img src="images/Notification.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
