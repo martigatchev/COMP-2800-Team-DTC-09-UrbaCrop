@@ -41,3 +41,7 @@ html {
 .invisible {
   visibility: hidden !important;
 }
+
+#map {
+  height: 100%;
+}
