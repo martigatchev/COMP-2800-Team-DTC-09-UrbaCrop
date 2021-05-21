@@ -93,3 +93,7 @@ html {
 .menu-option:hover {
   background-color: #eef5eb;
 }
+
+#map {
+  height: 100%;
+}
