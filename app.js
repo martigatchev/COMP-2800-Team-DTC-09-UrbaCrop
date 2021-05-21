@@ -86,10 +86,10 @@ app.post("/login", (req, res) => {
                 if (req.body.loginPassword == docs.password) {
                     console.log('successful login! User:' + docs.username);
                     if (docs.view == 'gardener') {
-                        res.redirect('/gardener_profile.html');
+                        res.redirect('/gardener_profile');
                     }
                     else {
-                        res.redirect('/gardeners_list.html');
+                        res.redirect('/gardeners_list');
                     }
                 }
                 else {
