@@ -30,7 +30,17 @@ app.get("/", (req, res)=> res.render("landing"));
 app.get("/about_us", (req, res)=> res.render("about_us"));
 app.get("/garden_map", (req, res)=> res.render("garden_map"));
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
-app.get("/gardeners_list", (req, res)=> res.render("gardeners_list"));
+app.get("/gardeners_list", (req, res)=> {
+    userInfo.find({view: 'gardener'}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.render("gardeners_list", {arrayOfGardeners: docs});
+        }
+    })
+    
+});
 
 app.get("/login", (req, res) => res.render("login"))
 app.get("/signup", (req, res) => res.render("sign_up"));
