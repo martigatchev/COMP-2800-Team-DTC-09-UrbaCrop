@@ -16,11 +16,15 @@ logo_button.addEventListener('click', function () {
    var animation_class = document.getElementsByClassName("animation_class_two")
    var profilePicture = document.getElementById("profile_img")
    var button_group = document.getElementsByClassName("profile_button")
+   var profileName = document.getElementById("profile_name_title")
+   var profileType = document.getElementById("profile_name_type")
 
    if (buttonCounter == 3) {
 
       buttonCounter ++
 
+      profileName.innerHTML = "Suaveman Frog"
+      profileType.innerHTML = "Lover, Revolutionary, Spiritual Leader"
       animation_image.style.animationPlayState = "running";
       animation_class[0].style.animationPlayState = "running";
       profilePicture.setAttribute("src", "https://i.kym-cdn.com/entries/icons/original/000/029/498/Frog_relaxing_0-9_screenshot.png")

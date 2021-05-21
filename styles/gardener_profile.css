@@ -1,19 +1,6 @@
 
 /* ----- TRIPPY----- */
 
-
-
-.animation_class {
-    /* background-color: green;
-    animation-name: easteregg;
-    animation-duration: 4s;
-    animation-play-state:paused;
-    animation-play-state:running;
-    animation-iteration-count:infinite; */
-    display: none;
-    /* height: 100%; */
-}
-
 .profile_button {
     animation-name: eastereggtwo;
     animation-duration: 1s;
@@ -76,6 +63,10 @@
 
 
 /* ----- WEBPAGE ----- */
+
+a:link {
+    text-decoration: none;
+  }
 
 #main_title {
     text-align: center;
