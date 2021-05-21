@@ -34,7 +34,10 @@
         <h2 class="text-center mb-3 mt-3 p-3">New Account</h2>
         
         <form action="/signup" method="POST" class="border border-success rounded p-3 needs-validation" style="background-color: #e2efdd;" novalidate>
-            <div id="forErrorMessage" class="mb-3"></div>
+            <div  class="mb-3">
+                <div id="usernameErrorMessage"></div>
+                <div id="forErrorMessage"></div>
+            </div>
             <div class="mb-3">
                 <label for="signupFirstName" class="form-label">First Name: </label>
                 <input type="text" class="form-control" id="signupFirstName" name="signupFirstName" required>
@@ -161,7 +164,7 @@ window.addEventListener('load', function() {
             event.stopPropagation();
             var passwordErrorDiv = document.getElementById('forErrorMessage');
             if (passwordErrorDiv.innerHTML === "") {
-                let node = document.createTextNode ('Confirm password does not match the password');
+                let node = document.createTextNode ('*Confirm password does not match the password.');
                 passwordErrorDiv.appendChild(node);
                 passwordErrorDiv.style.color = "red";
             }
