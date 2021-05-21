@@ -27,10 +27,10 @@ app.listen(PORT, function() {
 });
 
 app.get("/", (req, res)=> res.render("landing"));
-app.get("/about_us.html", (req, res)=> res.render("about_us"));
-app.get("/garden_map.html", (req, res)=> res.render("garden_map"));
-app.get("/gardener_profile.html", (req, res)=> res.render("gardener_profile"));
-app.get("/gardeners_list.html", (req, res)=> res.render("gardeners_list"));
+app.get("/about_us", (req, res)=> res.render("about_us"));
+app.get("/garden_map", (req, res)=> res.render("garden_map"));
+app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
+app.get("/gardeners_list", (req, res)=> res.render("gardeners_list"));
 
 app.get("/login", (req, res) => res.render("login"))
 app.get("/signup", (req, res) => res.render("sign_up"));
