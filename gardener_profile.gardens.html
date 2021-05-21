@@ -23,6 +23,7 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
 
+
 </head>
 
 <body>
@@ -30,14 +31,18 @@
   <!-- Top Nav Bar -->
 
   <nav class="navbar navbar-light navbar-fixed-top" style="background-color: #e2efdd;">
-    <div class="container-fluid">
+    <div class="container-fluid" id="container-fluid-top">
 
       <button id="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
         aria-controls="offcanvasExample">
         <img src="images/See as list.svg">
       </button>
-
-      <img id="topnav-logo" class="navbar-brand" src="images/leaf_logo.svg" alt="Green leaf logo">
+      <div class="easter_trigger">
+        <button id="logo_button">
+          <img id="topnav-logo" class="navbar-brand" src="images/leaf_logo.svg" alt="Green leaf logo">
+        </button>
+      </div>
+      
 
     </div>
   </nav>
@@ -90,21 +95,24 @@
 
   <div id="main_div">
 
-    <div id="tab_section">
+    <div id="tab_section" class="animation_class_two">
 
       <br>
 
-      <img src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="profile picture" width="150" height="150">
+      <div class="profile_picture" id="ani_test_image">
+        <img id="profile_img" src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="profile picture">
+      </div>
 
       <br>
-      <br>
 
-      <h4>
-        Suaveman Jones
-      </h4>
-      <h5>
-        Gardener
-      </h5>
+      <div id="profile_name">
+        <h4>
+          Suaveman Jones
+        </h4>
+        <h5>
+          Gardener
+        </h5>
+      </div>
 
       <br>
 
@@ -115,7 +123,6 @@
               <input type="button" class="profile_button" onclick="location.href='./gardener_profile.profile.html';"
                 value="Profile" />
             </div>
-
           </div>
           <div class="col tab_col">
             <div class="tab_col_content">
@@ -145,7 +152,7 @@
 
         <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden" width="100%" data-toggle="modal" data-target="#existingGarden">
 
-        <p class="card-text">This card will open up and allow to add gardens.</p>
+        <p class="card-text"></p>
 
         <!-- Button trigger modal -->
 
@@ -159,13 +166,13 @@
 
     <div class="card new_garden_card">
       <div class="card-body">
-        <h5 class="card-title">Gardens</h5>
-        <p class="card-text">This card will open up and allow to add gardens.</p>
+        <h5 class="card-title">Add a new garden</h5>
+        <!-- <p class="card-text">This card will open up and allow to add gardens.</p> -->
 
         <!-- Button trigger modal -->
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-          Add a Garden
+          +
         </button>
 
       </div>
@@ -190,25 +197,62 @@
 
             <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden" width="100%">
 
-            
+            <button>Add more photos</button>
+
+            <br>
+            <br>
 
             <form>
-              <div class="form-group">
-                <label for="exampleInputEmail1">EXISTING GARDEN</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                  else.</small>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Default checkbox
+                </label>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Default checkbox
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Default checkbox
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Default checkbox
+                </label>
+              </div>
+
+              <div class="form-group row">
+                <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                <div class="col-10">
+                  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                <div class="col-10">
+                  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                </div>
+              </div>
+
+              <form action="/action_page.php" id="usrform">
+                Name: <input type="text" name="usrname">
+                <input type="submit">
+              </form>
+              <br>
+              <textarea rows="4" cols="50" name="comment" form="usrform">
+              Enter text here...</textarea>
+        
             </form>
 
           </div>
@@ -313,6 +357,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+  <!-- Custom Javascript -->
+  <script src="./scripts/gardener_profile.js"></script>
 
 </body>
 
