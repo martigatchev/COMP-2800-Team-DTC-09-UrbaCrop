@@ -42,6 +42,20 @@ app.get("/gardeners_list", (req, res)=> {
     
 });
 
+app.post("/gardeners_list", (req, res) => {
+    console.log(req.body);
+
+    userInfo.find({view: 'gardener', lastName: req.body.gardenerLastName}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.render("gardeners_list", {arrayOfGardeners: docs});
+        }
+    })
+
+})
+
 app.get("/login", (req, res) => res.render("login"))
 app.get("/signup", (req, res) => res.render("sign_up"));
 app.post("/signup", (req, res) => {
