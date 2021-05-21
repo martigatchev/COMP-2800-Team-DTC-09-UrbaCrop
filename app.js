@@ -27,7 +27,7 @@ app.listen(PORT, function() {
     console.log("Running on port " + PORT);
 });
 
-app.get("/", (req, res)=> res.render("landing"));
+app.get("/", (req, res)=> res.render("login"));
 app.get("/about_us", (req, res)=> res.render("about_us"));
 app.get("/garden_map.html", (req, res)=> res.render("garden_map"));
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
