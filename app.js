@@ -30,7 +30,31 @@ app.get("/", (req, res)=> res.render("landing"));
 app.get("/about_us", (req, res)=> res.render("about_us"));
 app.get("/garden_map", (req, res)=> res.render("garden_map"));
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
-app.get("/gardeners_list", (req, res)=> res.render("gardeners_list"));
+app.get("/gardeners_list", (req, res)=> {
+    userInfo.find({view: 'gardener'}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.render("gardeners_list", {arrayOfGardeners: docs});
+        }
+    })
+    
+});
+
+app.post("/gardeners_list", (req, res) => {
+    console.log(req.body);
+
+    userInfo.find({view: 'gardener', lastName: req.body.gardenerLastName}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.render("gardeners_list", {arrayOfGardeners: docs});
+        }
+    })
+
+})
 
 app.get("/login", (req, res) => res.render("login"))
 app.get("/signup", (req, res) => res.render("sign_up"));
@@ -86,10 +110,10 @@ app.post("/login", (req, res) => {
                 if (req.body.loginPassword == docs.password) {
                     console.log('successful login! User:' + docs.username);
                     if (docs.view == 'gardener') {
-                        res.redirect('/gardener_profile.html');
+                        res.redirect('/gardener_profile');
                     }
                     else {
-                        res.redirect('/gardeners_list.html');
+                        res.redirect('/gardeners_list');
                     }
                 }
                 else {

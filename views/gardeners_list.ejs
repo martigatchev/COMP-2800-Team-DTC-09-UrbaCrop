@@ -94,22 +94,26 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form>                
+                  <form action="/gardeners_list" method="POST">                
+                    <!--<div class="mb-3">
+                      <label for="FilterByGardenerFirstName" class="form-label">Gardener's First Name:</label>
+                      <input type="text" class="form-control" id="FilterByGardenerFirstName" name="gardenerFirstName">
+                    </div>-->
                     <div class="mb-3">
-                      <label for="Gardener name" class="form-label">Gardener's Name:</label>
-                      <input type="text" class="form-control" id="FilterByGardenerName">
+                      <label for="FilterByGardenerLastName" class="form-label">Gardener's Last Name:</label>
+                      <input type="text" class="form-control" id="FilterByGardenerLastName" name="gardenerLastName">
                     </div>
                     <div class="mb-3">
-                      <label for="GardenerRating" class="form-label">Minimum Rating:</label>
-                      <input type="range" class="form-range" min="0" max="5" step="0.5" id="FilterByGardenerRating">
+                      <label for="FilterByGardenerRating" class="form-label">Minimum Rating:</label>
+                      <input type="range" class="form-range" min="0" max="5" step="0.5" id="FilterByGardenerRating" name="gardenerRating">
                     </div>
                     <div class="mb-3">
-                      <label for="GardenerNumProjects" class="form-label">Minimum Number of Projects:</label>
-                      <input type="range" class="form-range" min="0" max="20" step="1" id="FilterByGardenerNumProjects">
+                      <label for="FilterByGardenerNumProjects" class="form-label">Minimum Number of Projects:</label>
+                      <input type="range" class="form-range" min="0" max="10" step="1" id="FilterByGardenerNumProjects" name="gardenerNumOfProjects">
                     </div>
                     <div class="btn-group" role="group" aria-label="FilterButtons">
                       <button type="button" class="btn btn-danger">Reset</button>
-                      <button type="button" class="btn btn-primary">Filter</button>
+                      <button type="submit" class="btn btn-primary">Filter</button>
                     </div>
                   </form>
                 </div>
@@ -130,41 +134,15 @@
                 </tr>
             </thead>
             <tbody>
+              <% for (let i = 0; i < arrayOfGardeners.length; i++) { %>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Doe</td>
-                    <td>John</td>
-                    <td>4.5</td>
-                    <td>5</td>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td><%= arrayOfGardeners[i].lastName %></td>
+                    <td><%= arrayOfGardeners[i].firstName %></td>
+                    <td>0</td>
+                    <td>0</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Doe</td>
-                    <td>Jane</td>
-                    <td>5</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>L.N.</td>
-                    <td>F.N.</td>
-                    <td>4.2</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Khademolhosseini</td>
-                    <td>Sam</td>
-                    <td>??</td>
-                    <td>??</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                </tr>
+                <% }; %>
             </tbody>
           </table>
 
