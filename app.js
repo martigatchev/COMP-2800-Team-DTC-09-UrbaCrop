@@ -33,6 +33,7 @@ app.get("/garden_map.html", (req, res)=> res.render("garden_map"));
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
 app.get("/gardener_profile_garden", (req, res)=> res.render("gardener_profile_garden"));
 app.get("/gardener_profile_profile", (req, res)=> res.render("gardener_profile_profile"));
+app.get("/policies", (req, res)=> res.render("policy_page"));
 app.get("/gardeners_list", (req, res)=> {
     userInfo.find({view: 'gardener'}, (err, docs) => {
         if (err) {
