@@ -1,6 +1,7 @@
 const { render } = require("ejs");
 const express = require("express");
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 let url = 'mongodb+srv://userTest:userTestPassword@cluster0.o4dh9.mongodb.net/UserTest?retryWrites=true&w=majority';
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -20,6 +21,10 @@ let app = express();
     app.use("/favicon_package", express.static("favicon_package"));
     app.set("view engine", "ejs");
 
+    app.use(session({
+        secret: 'abcxyzasdfggfdsa'
+    }));
+
     
 let PORT = process.env.PORT || 3000;
 
@@ -32,7 +37,7 @@ app.get("/about_us", (req, res)=> res.render("about_us"));
 app.get("/garden_map.html", (req, res)=> res.render("garden_map"));
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
 app.get("/gardener_profile_garden", (req, res)=> res.render("gardener_profile_garden"));
-app.get("/gardener_profile_profile", (req, res)=> res.render("gardener_profile_profile"));
+app.get("/gardener_profile_profile", (req, res)=> res.render("gardener_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName}));
 app.get("/policies", (req, res)=> res.render("policy_page"));
 app.get("/gardeners_list", (req, res)=> {
     userInfo.find({view: 'gardener'}, (err, docs) => {
@@ -113,6 +118,10 @@ app.post("/login", (req, res) => {
             else {
                 if (req.body.loginPassword == docs.password) {
                     console.log('successful login! User:' + docs.username);
+                    req.session.username = docs.username;
+                    req.session.firstName = docs.firstName;
+                    req.session.lastName = docs.lastName;
+                    req.session.view = docs.view;
                     if (docs.view == 'gardener') {
                         res.redirect('/gardener_profile_profile');
                     }
