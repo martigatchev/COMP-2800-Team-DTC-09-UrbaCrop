@@ -6,7 +6,8 @@ const session = require('express-session');
 let url = 'mongodb+srv://userTest:userTestPassword@cluster0.o4dh9.mongodb.net/UserTest?retryWrites=true&w=majority';
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 let userInfo = require('./models/userInfo');
-let gardenInfo = require('./models/gardenInfo');
+let landlordGardenInfo = require('./models/landlordGardenInfo');
+let gardenerGardenInfo = require('./models/gardenerGardenInfo');
 let db = mongoose.connection;
 
 db.once('open', function() {
@@ -53,16 +54,67 @@ app.get("/garden_map.html", (req, res) => {
 });
 app.get("/gardener_profile_garden", (req, res) => {
     if(req.session.username) {
-        res.render("gardener_profile_garden");
+        gardenerGardenInfo.find({user: req.session.username}, (err, docs) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log('found:' + docs);
+                res.render("gardener_profile_garden", {userFirstName: req.session.firstName, userLastName: req.session.lastName,
+                userImg: req.session.imgURL, gardensArray: docs});
+            }
+        })
     } else {
         res.redirect('/');
     }
 });
+
+
 app.post("/addNewGarden", (req, res) => {
     console.log(req.body);
-    res.redirect('/gardener_profile_profile');
-})
+    
+    gardenerGardenInfo.findOne({user: req.session.username, gardenName: req.body.gardenName}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log('found:' + docs);
+            if (docs != null)  {
+                console.log(docs.user + docs.gardenName + ' already exists in the DB');
+                alert('The garden you are trying to add already exists in your gardens!');
+                res.redirect('/gardener_profile_profile');
+            }
+            else {
+                let plantArray = [];
+                if(req.body.fruits == '') {
+                    plantArray.push("fruits");
+                }
+                if(req.body.herb == '') {
+                    plantArray.push("herb");
+                }
+                if(req.body.flowers == '') {
+                    plantArray.push("flowers");
+                }
+                if(req.body.trees == '') {
+                    plantArray.push("trees");
+                }
+                if(req.body.vegetables == '') {
+                    plantArray.push("vegetables");
+                }
+                let gardenerGarden = new gardenerGardenInfo({user: req.session.username, gardenName: req.body.gardenName, photo: req.body.gardenImgURL,
+                gardenType: plantArray, size: req.body.size, about: req.body.comment});
 
+                gardenerGarden.save({user: req.session.username, gardenName: req.body.gardenName, photo: req.body.gardenImgURL,
+                    gardenType: plantArray, size: req.body.size, about: req.body.comment})
+                .then(result => {
+                    console.log(result)
+                    res.redirect('/gardener_profile_garden');
+                })
+                .catch(error => console.error(error))
+            }
+        }
+    })
+});
 
 
 

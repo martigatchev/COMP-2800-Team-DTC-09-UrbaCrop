@@ -4,14 +4,15 @@ let Scheme = mongooose.Schema;
 
 let landlordGardenSchema = new Scheme( {
     owner: String,
-    name: String,
+    gardenName: String,
     photo: String,
     location: String,
     address: String, 
     plantPreferences: Array,
     paymentOptions: Array,
     size: Number,
-    about: String
+    about: String,
+
 });
 
 module.exports = mongooose.model('landlordGarden', landlordGardenSchema);
