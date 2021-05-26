@@ -185,3 +185,12 @@ app.post("/login", (req, res) => {
 app.get("/logout", (req, res) => {
     req.session.destroy(() => res.redirect('/'));
 })
+
+
+
+
+
+// The next app.use should be the last line of code on this page.
+app.use(function (req, res) {
+    res.status(404).render('404error.ejs');
+});

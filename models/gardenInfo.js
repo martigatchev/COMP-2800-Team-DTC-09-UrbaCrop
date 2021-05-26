@@ -1,0 +1,16 @@
+let mongooose = require('mongoose');
+
+let Scheme = mongooose.Schema;
+
+let landlordGardenSchema = new Scheme( {
+    name: String,
+    photo: String,
+    location: String,
+    address: String, 
+    plantPreferences: Array,
+    paymentOptions: Array,
+    size: Number,
+    about: String
+});
+
+module.exports = mongooose.model('landlordGarden', landlordGardenSchema);

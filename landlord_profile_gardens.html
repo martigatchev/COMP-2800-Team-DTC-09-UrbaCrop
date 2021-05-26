@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="./styles/gardener_profile.css">
+  <link rel="stylesheet" href="./styles/landlord_profile.css">
 
   <title>UrbaCrop</title>
 
@@ -106,10 +106,10 @@
 
       <div id="profile_name">
         <h4 id="profile_name_title">
-          Suaveman Jones
+          Bourgeoisie Bob
         </h4>
         <h5 id="profile_name_type">
-          Gardener
+          Landlord
         </h5>
       </div>
 
@@ -147,10 +147,10 @@
 
     <div class="card existing_garden_card">
       <div class="card-body">
-        <h5 class="card-title">Helsinki Garden</h5>
+        <h5 class="card-title">Marpole Garden</h5>
 
         <button class="garden_image_button" type="button" data-toggle="modal" data-target="#viewGarden">
-          <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden" width="100%">
+          <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden" width="100%">
         </button>
 
         <p class="card-text"></p>
@@ -197,7 +197,7 @@
 
             <form>
 
-              <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden" width="100%">              
+              <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden" width="100%">              
 
               <br>
               <br>
@@ -271,7 +271,7 @@
 
               <br>
 
-              <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden" width="100%">              
+              <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden" width="100%">              
 
               <br>
               <br>
@@ -389,13 +389,48 @@
               </form>
 
               <br>
-
+              
               <button>Add a photo</button>
-
+              
               <br>
               <br>
 
-              Garden type:
+              <form action="/action_page.php">
+                <label for="plants">Location:</label>
+                <select id="plants" name="plants">
+                  <option value="Marpole">Marpole</option>
+                  <option value="Arbutus Ridge">Arbutus Ridge</option>
+                  <option value="Dunbar-Southlands">Dunbar-Southlands</option>
+                  <option value="Grandview-Woodland">Grandview-Woodland</option>
+                  <option value="Hastings-Sunrise">Hastings-Sunrise</option>
+                  <option value="Kensington-Cedar Cottage">Kensington-Cedar Cottage</option>
+                  <option value="Kerrisdale">Kerrisdale</option>
+                  <option value="Killarney">Killarney</option>
+                  <option value="Kitsilano">Kitsilano</option>
+                  <option value="Mount Pleasant">Mount Pleasant</option>
+                  <option value="Oakridge">Oakridge</option>
+                  <option value="Renfrew-Collingwood">Renfrew-Collingwood</option>
+                  <option value="Riley Park">Riley Park</option>
+                  <option value="Shaughnessy">Shaughnessy</option>
+                  <option value="South Cambie">South Cambie</option>
+                  <option value="Strathcona">Strathcona</option>
+                  <option value="Sunset">Sunset</option>
+                  <option value="Victoria-Fraserview">Victoria-Fraserview</option>
+                  <option value="West End">West End</option>
+                  <option value="West Point Grey">West Point Grey</option>
+                </select>
+                <input type="submit" class="btn btn-success dropdown-toggle">
+
+              <br>
+
+              <form action="/action_page.php" id="usrform">
+                Address: <input type="text" name="usrname">
+                <input type="submit" class="btn btn-success dropdown-toggle">
+              </form>
+
+              <br>
+
+              Plant preferences:
 
               <div id="garden_type_indicator">
 
@@ -431,6 +466,36 @@
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
                     Herb
+                  </label>
+                </div>
+
+              </div>
+
+              <br>
+
+
+              Payment Options:
+
+              <div id="garden_type_indicator">
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Crop Share
+                  </label>
+                </div>
+  
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Rent
+                  </label>
+                </div>
+  
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Volunteer
                   </label>
                 </div>
 
