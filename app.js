@@ -1,10 +1,12 @@
 const { render } = require("ejs");
 const express = require("express");
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 let url = 'mongodb+srv://userTest:userTestPassword@cluster0.o4dh9.mongodb.net/UserTest?retryWrites=true&w=majority';
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 let userInfo = require('./models/userInfo');
+let gardenInfo = require('./models/gardenInfo');
 let db = mongoose.connection;
 
 db.once('open', function() {
@@ -21,6 +23,12 @@ let app = express();
     app.use("/favicon_package", express.static("favicon_package"));
     app.set("view engine", "ejs");
 
+    app.use(session({
+        secret: 'abcxyzasdfggfdsa',
+        resave: true,
+        rolling: true,
+    }));
+
     
 let PORT = process.env.PORT || 3000;
 
@@ -29,38 +37,78 @@ app.listen(PORT, function() {
 });
 
 app.get("/", (req, res)=> res.render("login"));
-app.get("/about_us", (req, res)=> res.render("about_us"));
-app.get("/garden_map.html", (req, res)=> res.render("garden_map"));
-app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
-app.get("/gardener_profile_garden", (req, res)=> res.render("gardener_profile_garden"));
-app.get("/gardener_profile_profile", (req, res)=> res.render("gardener_profile_profile"));
-app.get("/policies", (req, res)=> res.render("policy_page"));
-app.get("/gardeners_list", (req, res)=> {
-    userInfo.find({view: 'gardener'}, (err, docs) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.render("gardeners_list", {arrayOfGardeners: docs});
-        }
-    })
-    
+app.get("/about_us", (req, res) => {
+    if(req.session.username) {
+        res.render("about_us");
+    } else {
+        res.redirect('/');
+    }
 });
-
+app.get("/garden_map.html", (req, res) => {
+    if(req.session.username) {
+        res.render("garden_map");
+    } else {
+        res.redirect('/');
+    }
+});
+app.get("/gardener_profile", (req, res) => {
+    if(req.session.username) {
+        res.render("gardener_profile");
+    } else {
+        res.redirect('/');
+    }
+});
+app.get("/gardener_profile_garden", (req, res) => {
+    if(req.session.username) {
+        res.render("gardener_profile_garden");
+    } else {
+        res.redirect('/');
+    }
+});
+app.get("/gardener_profile_profile", (req, res) => {
+    if(req.session.username) {
+        res.render("gardener_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL})
+    } else {
+        res.redirect('/');
+    }
+});
+app.get("/policies", (req, res) => {
+    if(req.session.username) {
+        res.render("policy_page")
+    } else {
+        res.redirect('/');
+    }
+});
+app.get("/gardeners_list", (req, res)=> {
+    if(req.session.username) {
+        userInfo.find({view: 'gardener'}, (err, docs) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                res.render("gardeners_list", {arrayOfGardeners: docs});
+            }
+        })
+    } else {
+        res.redirect('/');
+    }
+});
 app.post("/gardeners_list", (req, res) => {
-    console.log(req.body);
+    if(req.session.username) {
+        console.log(req.body);
 
-    userInfo.find({view: 'gardener', lastName: req.body.gardenerLastName}, (err, docs) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.render("gardeners_list", {arrayOfGardeners: docs});
-        }
-    })
-
+        userInfo.find({view: 'gardener', lastName: req.body.gardenerLastName}, (err, docs) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                res.render("gardeners_list", {arrayOfGardeners: docs});
+            }
+        })
+    } else {
+        res.redirect('/');
+    }
 })
-
 app.get("/login", (req, res) => res.render("login"))
 app.get("/signup", (req, res) => res.render("sign_up"));
 app.post("/signup", (req, res) => {
@@ -81,13 +129,13 @@ app.post("/signup", (req, res) => {
                     email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
                     phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
                     postalCode: req.body.signupPostalCode, address: req.body.signupAddress, city: req.body.signupCity,
-                    view: req.body.signupOption});
+                    view: req.body.signupOption, imgURL: ""});
 
                 user.save({firstName: req.body.signupFirstName, lastName: req.body.signupLastName, 
                     email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
                     phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
                     postalCode: req.body.signupPostalCode, address: req.body.signupAddress, city: req.body.signupCity,
-                    view: req.body.signupOption})
+                    view: req.body.signupOption, imgURL: ""})
 
                 .then(result => {
                     console.log(result)
@@ -114,6 +162,12 @@ app.post("/login", (req, res) => {
             else {
                 if (req.body.loginPassword == docs.password) {
                     console.log('successful login! User:' + docs.username);
+                    req.session.username = docs.username;
+                    req.session.firstName = docs.firstName;
+                    req.session.lastName = docs.lastName;
+                    req.session.view = docs.view;
+                    req.session.imgURL = docs.imgURL;
+                    req.session.cookie.maxAge = 3 * 60 * 1000;
                     if (docs.view == 'gardener') {
                         res.redirect('/gardener_profile_profile');
                     }
@@ -130,6 +184,9 @@ app.post("/login", (req, res) => {
     })
 })
 
+app.get("/logout", (req, res) => {
+    req.session.destroy(() => res.redirect('/'));
+})
 
 
 

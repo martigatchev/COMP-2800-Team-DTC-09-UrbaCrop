@@ -80,7 +80,7 @@
         </div>
         <div class="menu-option">
             <img src="images/logout.svg" alt="Log out Icon">
-            <a href="#">Log out</a>
+            <a href="/logout">Log out</a>
         </div>
       </div>
     </div>
@@ -93,14 +93,16 @@
     <div id="tab_section">
         
         <br>
-
-        <img src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="profile picture" width="150" height="150">
+        <% if (userImg == "") {
+          userImg = "https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg"
+        } %>
+        <img src=<%= userImg %> alt="profile picture" width="150" height="150">
       
         <br>
         <br>
 
         <h4>
-            Suaveman Jones
+            <%= userFirstName %> <%= userLastName %>
         </h4>
         <h5>
             Gardener

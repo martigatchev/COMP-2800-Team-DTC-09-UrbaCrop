@@ -3,6 +3,7 @@ let mongooose = require('mongoose');
 let Scheme = mongooose.Schema;
 
 let landlordGardenSchema = new Scheme( {
+    owner: String,
     name: String,
     photo: String,
     location: String,
