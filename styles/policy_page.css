@@ -1,58 +1,22 @@
-* {
- box-sizing: border-box;
- margin: 0;
- padding: 0;
-}
-
 body {
+  background-color: lightgreen;
   font-family: 'Raleway', sans-serif;
-  background-color: FFFFF;
   font-size: smaller;
+  
 }
 
-a {
- text-decoration: none;
-}
-
-#container {
-
-  margin: auto;
-  padding:  6rem 40rem 9rem 40rem;
-}
-
-.form-wrap {
-  /* White area around form */ 
-
-  background-color: #e2efdd;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
-  padding-left: 0.3rem;
-  padding-right: 0.3rem
-}
-
-.form-wrap h1,
-.form-wrap p {
+#main_title {
   text-align: center;
-  margin-bottom: 0.5rem;
+  padding: 3%;
 }
 
-.form-wrap .form-group {
-  margin-top: 0.6rem;
-
+.card {
+  margin: 0 auto;
+  width: 75%;
+  margin-bottom: 20px;
 }
 
-.form-wrap .form-group label {
-  margin-left: 1rem;
-}
-
-.form-wrap .form-group input {
-  border-radius: 5px;
-  width: 85%;
-  margin-left: 50%;
-  border: 0.05px solid black;
-}
-
-.form-wrap button {
+.btn {
   display: block;
   width: 80%;
   margin-top: 1.2rem;
@@ -62,31 +26,120 @@ a {
   border: none;
   color: white;
   padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem;;
 }
 
-.form-wrap button:hover {
+button.btn:hover {
   background-color: lightgreen;
-
 }
 
-.form-wrap .bottom-text {
-
-  font-size: smaller;
+#main_div {
+  text-align: center;
 }
 
-footer {
-  /*
-  Should be centred
- */
- margin-top: 2rem;
- color: black;
- text-align: center;
+#main_div img {
+  width: 65%;
+  margin: auto;
 }
 
-footer a {
-  color: darkblue;
+#logo_image {
+  width: 50%;
 }
 
 
+/* ----- Menu section ----- */
 
+#bottom_grid {
+  background-color: #e2efdd;
+  position:fixed;
+  bottom: 0;
+  height: 7%;
+}
+
+.row {
+  height: 100%;
+}
+
+.col {
+  position: relative;
+  padding: 5px;
+}
+
+.col_content {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -12px 0 0 -25px;
+  text-align: center;
+}
+
+.col:hover {
+  background-color: #bcd4b6;
+}
+
+.navbar-fixed-top {
+  height: 7%;
+}
+
+#navbar-toggler {
+  border: none;
+  background-color: #e2efdd;
+}
+
+#topnav-logo {
+  float: center;
+}
+
+.offcanvas {
+  width: 70%;
+}
+
+.quick-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.quick-nav a {
+  color: #1B490A;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-info h3 {
+  font-size: 20px;
+}
+
+.user-info h4 {
+  font-size: 15px;
+}
+
+.user-info img {
+  border-radius: 100px;
+}
+
+#user-pro-pic {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.menu-option {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.menu-option:hover {
+  background-color: #eef5eb;
+}
+
+.menu-option img {
+  padding-right: 15px;
+}
