@@ -1,11 +1,81 @@
 
+/* ----- TRIPPY----- */
+
+.profile_button {
+    animation-name: eastereggtwo;
+    animation-duration: 1s;
+    animation-play-state:paused;
+    animation-iteration-count:infinite;
+    height: 100%;
+}
+
+.animation_class_two {
+    animation-name: eastereggtwo;
+    animation-duration: 1s;
+    animation-play-state:paused;
+    animation-iteration-count:infinite;
+    height: 100%;
+}
+
+@keyframes eastereggtwo {
+    0%   {background-color:#eef5eb;}
+    25%  {background-color:lightgreen;}
+    50%  {background-color:green;}
+    75%  {background-color:lightgreen;}
+    100% {background-color:#eef5eb;}
+}
+
+/* ANIMATION TESTER TESTER TESTER */
+
+#ani_test_image {
+    position: relative;
+    animation: linear infinite;
+    animation-name: run;
+    animation-duration: 5s;
+    animation-play-state:paused;
+  }
+
+.ani_test_image img {
+    width: 30%;
+}
+
+@keyframes run {
+    0% {
+        left: 0%;
+    }
+    25% {
+        left: -40%;
+        -webkit-transform: rotateY(0deg); 
+    }
+    50% { 
+        left: 0%;
+        -webkit-transform: rotateY(180deg); 
+    }
+    75% {
+        left: 40%;
+        -webkit-transform: rotateY(180deg); 
+    }
+    100% {
+        left: 0%;    
+        -webkit-transform: rotateY(0deg);
+    }
+}
 
 
 /* ----- WEBPAGE ----- */
 
+a:link {
+    text-decoration: none;
+  }
+
 #main_title {
     text-align: center;
     padding: 3%;
+}
+
+.profile_picture img {
+    width: 150px; 
+    height: 150px;
 }
 
 .card {
@@ -33,24 +103,51 @@
 
 .tab_col_content {
     font-size: 22px;
-    padding-bottom: 3px;
-    padding-top: 10px;
+    /* padding-bottom: 3px;
+    padding-top: 10px; */
 }
 
-.tab_col {
+.col.tab_col {
     text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .card {
     width: 90%;
 }
 
+.card-body img {
+    width: 80%;
+}
+
 .selection_rectangle {
-    width: 90%;
+    width: 100%;
     height: 8px;
     background-color: green;
     margin: auto;
 }
+
+
+.profile_button {
+    background-color: #eef5eb;
+    border: #eef5eb;
+    width: 100%;
+    height: 100%;
+}
+
+.profile_button:hover {
+    background-color: #bcd4b6;
+}
+
+.btn-primary {
+    background-color: green;
+    border: green;
+}
+
+
 
 /* ----- MENU SKELETON ----- */
 
@@ -95,6 +192,15 @@
 
 #topnav-logo {
     float: center;
+}
+
+#logo_button {
+    background-color: #e2efdd;
+    border: #e2efdd;
+}
+
+.navbar-brand {
+    margin-right: 5px;
 }
 
 .offcanvas {

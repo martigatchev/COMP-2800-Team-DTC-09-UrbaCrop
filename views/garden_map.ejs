@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="./styles/index.css">
   <link rel="stylesheet" href="./styles/filter_map.css">
 
-  <title>Garden Map - UrbaCrop</title>
+  <title>UrbaCrop</title>
 
   <link rel="apple-touch-icon" sizes="180x180" href="./favicon_package/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon_package/favicon-32x32.png">
@@ -44,7 +44,7 @@
     </div>
     <div class="offcanvas-body">
       <div class="user-info">
-        <a href="gardener_profile.html">
+        <a href="/gardener_profile">
           <img id="user-pro-pic" src="https://via.placeholder.com/150" alt="User Profile Picture">
           <div class="name-title">
             <h3>Suaveman Jones</h3>
@@ -58,8 +58,8 @@
             <a href="#">Your Applications</a>
         </div>
         <div class="menu-option">
-            <img src="images/favorites.svg" alt="Favourites Icon">
-            <a href="#">Your Favourites</a>
+            <img src="images/favorites.svg" alt="Favorites Icon">
+            <a href="#">Your Favorites</a>
         </div>
         <div class="menu-option">
             <img src="images/guidelines.svg" alt="Guidelines Icon">
@@ -67,7 +67,7 @@
         </div>
         <div class="menu-option">
           <img src="images/about_us.svg" alt="About Us Icon">
-          <a href="about_us.html">About Us</a>
+          <a href="/about_us">About Us</a>
         </div>
         <div class="menu-option">
             <img src="images/settings.svg" alt="Settings Icon">
@@ -81,17 +81,17 @@
     </div>
   </div>
 
-  <div class="filter-menu">
+  <!--<div class="filter-menu">
     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <img src="images/Filter.svg" alt="Filter Icon">
     </button>
     <button type="button" id="list_toggle_button">
       <img src="images/See as list.svg" alt="See as list Icon">
     </button>
-  </div>
+  </div>-->
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -127,9 +127,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 
-  <!--Map Result as a List-->
+  <div id="map"></div>
+
+  <!--Map Result as a List
   <div class="accordion invisible" id="accordionPanelsStayOpenExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -187,7 +189,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 
   <div class="container-fluid" id="bottom_grid">
     <div class="row">
@@ -197,7 +199,7 @@
         </div>
       </div>
         <div class="col">
-          <a href="garden_map.html">
+          <a href="/garden_map">
             <div class="col_content">
               <img src="images/Discovery.svg">
             </div>
@@ -214,10 +216,47 @@
   <!-- Optional JavaScript; choose one of the two! -->
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-    crossorigin="anonymous"></script>
-  <script src="scripts/garden_map.js"></script>
+  <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHNVYypB7hoi1m9sN6zVZ1manCwx81Whc&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+  <script>
+    function main() {
+  document.getElementById("list_toggle_button").addEventListener("click", toggle_visibility)
+}
+function toggle_visibility() {
+  document.getElementById("accordionPanelsStayOpenExample").classList.toggle("invisible");
+}
+
+
+let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 12,
+    center: new google.maps.LatLng(49.246292, -123.116226),
+    mapTypeId: "terrain",
+  });
+  // Create a <script> tag and set the USGS URL as the source.
+  map.data.loadGeoJson('../data/community-gardens-and-food-trees.geojson');
+
+}
+
+const eqfeed_callback = function (results) {
+  for (let i = 0; i < results.features.length; i++) {
+    const coords = results.features[i].geometry.coordinates;
+    const latLng = new google.maps.LatLng(coords[1], coords[0]);
+    let this_marker = new google.maps.Circle({
+      position: latLng,
+      map: map,
+    });
+    this_marker.addEventListener("click", function() {
+
+    })
+  }
+};
+main();
+  </script>
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--
