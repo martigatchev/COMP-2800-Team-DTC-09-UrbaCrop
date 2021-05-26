@@ -16,20 +16,46 @@ function initMap() {
   });
   // Create a <script> tag and set the USGS URL as the source.
   map.data.loadGeoJson('data/community-gardens-and-food-trees.geojson');
+  console.log("map updated");
 
+  var infowindow = new google.maps.InfoWindow({
+    content: "<b>Hello</b>",
+  });
+
+  map.data.addListener('click', function(event) {
+    let html = "<b>Name: </b>" + event.feature.getProperty("name") + "<br>"
+              + "<b>Location: </b>" + event.feature.getProperty("merged_address") + "<br>"
+              + "<b>Neighborhood: </b>" + event.feature.getProperty("geo_local_area") + "<br>"
+    infowindow.setContent(html);
+    // position the infowindow on the marker
+    infowindow.setPosition(event.feature.getGeometry().get());
+    // anchor the infowindow on the marker
+    infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+    infowindow.open(map);
+  });
 }
 
-const eqfeed_callback = function (results) {
+/**const eqfeed_callback = function (results) {
+  var markers = Array();
+  var infowindow = new google.maps.InfoWindow({
+    content: "<b>Hello</b>",
+  });
+  //results.features.length
   for (let i = 0; i < results.features.length; i++) {
     const coords = results.features[i].geometry.coordinates;
     const latLng = new google.maps.LatLng(coords[1], coords[0]);
-    let this_marker = new google.maps.Circle({
+    let marker = new google.maps.Marker({
       position: latLng,
       map: map,
+      clickable: true,
     });
-    this_marker.addEventListener("click", function() {
-
-    })
+    google.maps.event.addListener(marker, 'click', (function (marker) {
+      return function () {
+          infowindow.open(map, marker);
+          google.maps.event.addListener(infowindow,'domready');
+      };
+   })(marker));
   }
-};
+};*/
+
 main();
