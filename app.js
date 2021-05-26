@@ -22,7 +22,9 @@ let app = express();
     app.set("view engine", "ejs");
 
     app.use(session({
-        secret: 'abcxyzasdfggfdsa'
+        secret: 'abcxyzasdfggfdsa',
+        resave: true,
+        rolling: true,
     }));
 
     
@@ -37,7 +39,13 @@ app.get("/about_us", (req, res)=> res.render("about_us"));
 app.get("/garden_map.html", (req, res)=> res.render("garden_map"));
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
 app.get("/gardener_profile_garden", (req, res)=> res.render("gardener_profile_garden"));
-app.get("/gardener_profile_profile", (req, res)=> res.render("gardener_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName}));
+app.get("/gardener_profile_profile", (req, res)=> {
+    if(req.session.username) {
+        res.render("gardener_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName})
+    } else {
+        res.redirect('/');
+    }
+});
 app.get("/policies", (req, res)=> res.render("policy_page"));
 app.get("/gardeners_list", (req, res)=> {
     userInfo.find({view: 'gardener'}, (err, docs) => {
@@ -48,7 +56,6 @@ app.get("/gardeners_list", (req, res)=> {
             res.render("gardeners_list", {arrayOfGardeners: docs});
         }
     })
-    
 });
 
 app.post("/gardeners_list", (req, res) => {
@@ -122,6 +129,7 @@ app.post("/login", (req, res) => {
                     req.session.firstName = docs.firstName;
                     req.session.lastName = docs.lastName;
                     req.session.view = docs.view;
+                    req.session.cookie.maxAge = 3 * 60 * 1000;
                     if (docs.view == 'gardener') {
                         res.redirect('/gardener_profile_profile');
                     }
