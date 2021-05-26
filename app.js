@@ -13,6 +13,7 @@ db.once('open', function() {
 
 let app = express();
     app.use(express.urlencoded({extended: true}));
+    app.use("/scripts", express.static('scripts'));
     app.use("/data", express.static('data'));
     app.use("/public", express.static('public')); 
     app.use("/styles", express.static("styles"));
