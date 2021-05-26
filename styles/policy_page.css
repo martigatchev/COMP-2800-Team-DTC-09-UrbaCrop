@@ -1,0 +1,92 @@
+* {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: FFFFF;
+  font-size: smaller;
+}
+
+a {
+ text-decoration: none;
+}
+
+#container {
+
+  margin: auto;
+  padding:  6rem 40rem 9rem 40rem;
+}
+
+.form-wrap {
+  /* White area around form */ 
+
+  background-color: #e2efdd;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem
+}
+
+.form-wrap h1,
+.form-wrap p {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.form-wrap .form-group {
+  margin-top: 0.6rem;
+
+}
+
+.form-wrap .form-group label {
+  margin-left: 1rem;
+}
+
+.form-wrap .form-group input {
+  border-radius: 5px;
+  width: 85%;
+  margin-left: 50%;
+  border: 0.05px solid black;
+}
+
+.form-wrap button {
+  display: block;
+  width: 80%;
+  margin-top: 1.2rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #198754;
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-wrap button:hover {
+  background-color: #1B490A;
+
+}
+
+.form-wrap .bottom-text {
+
+  font-size: smaller;
+}
+
+footer {
+  /* 
+  Should be centred
+ */
+ margin-top: 2rem;
+ color: black;
+ text-align: center;
+}
+
+footer a {
+  color: darkblue;
+}
+
+
+
