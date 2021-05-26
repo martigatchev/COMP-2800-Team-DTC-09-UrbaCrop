@@ -35,43 +35,78 @@ app.listen(PORT, function() {
 });
 
 app.get("/", (req, res)=> res.render("login"));
-app.get("/about_us", (req, res)=> res.render("about_us"));
-app.get("/garden_map.html", (req, res)=> res.render("garden_map"));
-app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
-app.get("/gardener_profile_garden", (req, res)=> res.render("gardener_profile_garden"));
-app.get("/gardener_profile_profile", (req, res)=> {
+app.get("/about_us", (req, res) => {
+    if(req.session.username) {
+        res.render("about_us");
+    } else {
+        res.redirect('/');
+    }
+});
+app.get("/garden_map.html", (req, res) => {
+    if(req.session.username) {
+        res.render("garden_map");
+    } else {
+        res.redirect('/');
+    }
+});
+app.get("/gardener_profile", (req, res) => {
+    if(req.session.username) {
+        res.render("gardener_profile");
+    } else {
+        res.redirect('/');
+    }
+});
+app.get("/gardener_profile_garden", (req, res) => {
+    if(req.session.username) {
+        res.render("gardener_profile_garden");
+    } else {
+        res.redirect('/');
+    }
+});
+app.get("/gardener_profile_profile", (req, res) => {
     if(req.session.username) {
         res.render("gardener_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName})
     } else {
         res.redirect('/');
     }
 });
-app.get("/policies", (req, res)=> res.render("policy_page"));
-app.get("/gardeners_list", (req, res)=> {
-    userInfo.find({view: 'gardener'}, (err, docs) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.render("gardeners_list", {arrayOfGardeners: docs});
-        }
-    })
+app.get("/policies", (req, res) => {
+    if(req.session.username) {
+        res.render("policy_page")
+    } else {
+        res.redirect('/');
+    }
 });
-
+app.get("/gardeners_list", (req, res)=> {
+    if(req.session.username) {
+        userInfo.find({view: 'gardener'}, (err, docs) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                res.render("gardeners_list", {arrayOfGardeners: docs});
+            }
+        })
+    } else {
+        res.redirect('/');
+    }
+});
 app.post("/gardeners_list", (req, res) => {
-    console.log(req.body);
+    if(req.session.username) {
+        console.log(req.body);
 
-    userInfo.find({view: 'gardener', lastName: req.body.gardenerLastName}, (err, docs) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.render("gardeners_list", {arrayOfGardeners: docs});
-        }
-    })
-
+        userInfo.find({view: 'gardener', lastName: req.body.gardenerLastName}, (err, docs) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                res.render("gardeners_list", {arrayOfGardeners: docs});
+            }
+        })
+    } else {
+        res.redirect('/');
+    }
 })
-
 app.get("/login", (req, res) => res.render("login"))
 app.get("/signup", (req, res) => res.render("sign_up"));
 app.post("/signup", (req, res) => {
