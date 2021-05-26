@@ -6,6 +6,7 @@ const session = require('express-session');
 let url = 'mongodb+srv://userTest:userTestPassword@cluster0.o4dh9.mongodb.net/UserTest?retryWrites=true&w=majority';
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 let userInfo = require('./models/userInfo');
+let gardenInfo = require('./models/gardenInfo');
 let db = mongoose.connection;
 
 db.once('open', function() {
