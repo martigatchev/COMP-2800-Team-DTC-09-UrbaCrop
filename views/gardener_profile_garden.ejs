@@ -119,13 +119,13 @@
         <div class="row">
           <div class="col tab_col">
             <div class="tab_col_content">
-              <input type="button" class="profile_button" onclick="location.href='./gardener_profile.profile.html';"
+              <input type="button" class="profile_button" onclick="location.href='./gardener_profile_profile';"
                 value="Profile" />
             </div>
           </div>
           <div class="col tab_col">
             <div class="tab_col_content">
-              <input type="button" class="profile_button" onclick="location.href='./gardener_profile.gardens.html';"
+              <input type="button" class="profile_button" onclick="location.href='./gardener_profile_garden';"
                 value="Gardens" />
             </div>
             <div class="selection_rectangle"></div>
@@ -380,17 +380,19 @@
 
             <br>
 
-            <form>
+            <form action="/addNewGarden" method="POST">
 
 
-              <form action="/action_page.php" id="usrform">
-                Name: <input type="text" name="usrname">
-                <input type="submit">
-              </form>
+              <!-- <form action="/action_page.php" id="usrform"> -->
+                Garden's Name: <input type="text" name="gardenName">
+                <!-- <input type="submit"> -->
+              <!-- </form> -->
 
               <br>
 
-              <button>Add a photo</button>
+              <!-- <button>Add a photo</button> -->
+                Image URL: <input type="text" name="gardenImgURL">
+
 
               <br>
               <br>
@@ -400,35 +402,35 @@
               <div id="garden_type_indicator">
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="vegetables">
                   <label class="form-check-label" for="defaultCheck1">
                     Vegetables
                   </label>
                 </div>
   
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="fruits">
                   <label class="form-check-label" for="defaultCheck1">
                     Fruits
                   </label>
                 </div>
   
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="trees">
                   <label class="form-check-label" for="defaultCheck1">
                     Trees
                   </label>
                 </div>
   
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="flowers">
                   <label class="form-check-label" for="defaultCheck1">
                     Flowers
                   </label>
                 </div>
   
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="herb">
                   <label class="form-check-label" for="defaultCheck1">
                     Herb
                   </label>
@@ -441,11 +443,11 @@
 
               <div id="garden_size_indicator">
 
-                <form action="/action_page.php">
+                <!-- <form action="/action_page.php"> -->
                   <label for="fname">Size:</label> 
-                  <input type="text" id="fname" name="fname"> sq m.
+                  <input type="number" id="fname" name="size"> sq m.
                   <br>
-                </form>
+                <!-- </form> -->
                 
               </div>
 
@@ -455,20 +457,17 @@
 
               <div id="garden_bio_indicator">
 
-                <textarea rows="4" cols="50" name="comment" form="usrform" placeholder="Enter short description here..."></textarea>
+                <textarea rows="4" cols="50" name="comment" placeholder="Enter short description here..."></textarea>
 
               </div>
+            
 
-              
-              
-        
-            </form>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
         </div>
       </div>
     </div>

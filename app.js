@@ -51,13 +51,6 @@ app.get("/garden_map.html", (req, res) => {
         res.redirect('/');
     }
 });
-app.get("/gardener_profile", (req, res) => {
-    if(req.session.username) {
-        res.render("gardener_profile");
-    } else {
-        res.redirect('/');
-    }
-});
 app.get("/gardener_profile_garden", (req, res) => {
     if(req.session.username) {
         res.render("gardener_profile_garden");
@@ -65,6 +58,14 @@ app.get("/gardener_profile_garden", (req, res) => {
         res.redirect('/');
     }
 });
+app.post("/addNewGarden", (req, res) => {
+    console.log(req.body);
+    res.redirect('/gardener_profile_profile');
+})
+
+
+
+
 app.get("/gardener_profile_profile", (req, res) => {
     if(req.session.username) {
         res.render("gardener_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL})
@@ -167,7 +168,7 @@ app.post("/login", (req, res) => {
                     req.session.lastName = docs.lastName;
                     req.session.view = docs.view;
                     req.session.imgURL = docs.imgURL;
-                    req.session.cookie.maxAge = 3 * 60 * 1000;
+                    req.session.cookie.maxAge = 10 * 60 * 1000;
                     if (docs.view == 'gardener') {
                         res.redirect('/gardener_profile_profile');
                     }
