@@ -93,8 +93,10 @@
     <div id="tab_section">
         
         <br>
-
-        <img src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="profile picture" width="150" height="150">
+        <% if (userImg == "") {
+          userImg = "https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg"
+        } %>
+        <img src=<%= userImg %> alt="profile picture" width="150" height="150">
       
         <br>
         <br>

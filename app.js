@@ -65,7 +65,7 @@ app.get("/gardener_profile_garden", (req, res) => {
 });
 app.get("/gardener_profile_profile", (req, res) => {
     if(req.session.username) {
-        res.render("gardener_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName})
+        res.render("gardener_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL})
     } else {
         res.redirect('/');
     }
@@ -127,13 +127,13 @@ app.post("/signup", (req, res) => {
                     email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
                     phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
                     postalCode: req.body.signupPostalCode, address: req.body.signupAddress, city: req.body.signupCity,
-                    view: req.body.signupOption});
+                    view: req.body.signupOption, imgURL: ""});
 
                 user.save({firstName: req.body.signupFirstName, lastName: req.body.signupLastName, 
                     email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
                     phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
                     postalCode: req.body.signupPostalCode, address: req.body.signupAddress, city: req.body.signupCity,
-                    view: req.body.signupOption})
+                    view: req.body.signupOption, imgURL: ""})
 
                 .then(result => {
                     console.log(result)
@@ -164,6 +164,7 @@ app.post("/login", (req, res) => {
                     req.session.firstName = docs.firstName;
                     req.session.lastName = docs.lastName;
                     req.session.view = docs.view;
+                    req.session.imgURL = docs.imgURL;
                     req.session.cookie.maxAge = 3 * 60 * 1000;
                     if (docs.view == 'gardener') {
                         res.redirect('/gardener_profile_profile');
