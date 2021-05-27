@@ -39,7 +39,7 @@
                     <div class="invalid-feedback">
                         Please provide a username.
                       </div>
-                      <div id="usernameErrorMessage"></div>   
+                      <div id="usernameErrorMessage" style="color: red;"><%= usernameErrorMessage %></div>   
                 </div>             
             </div>
             <div class="mb-3 row">
@@ -51,7 +51,7 @@
                     <div class="invalid-feedback">
                         Please enter a password.
                       </div>
-                      <div id="passwordErrorMessage"></div>
+                      <div id="passwordErrorMessage" style="color: red;"><%= passwordErrorMessage %></div>
                 </div>                
             </div>
             <div class="text-center mb-3">
@@ -69,16 +69,22 @@
   crossorigin="anonymous"></script>
   <!-- <script src="./scripts/login.js"></script> -->
   <script>
- // Example starter JavaScript for disabling form submissions if there are invalid fields
-//  let mongoose = require('mongoose');
-// let url = 'mongodb+srv://userTest:userTestPassword@cluster0.o4dh9.mongodb.net/UserTest?retryWrites=true&w=majority';
-// mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
-// let userInfo = require('./models/userInfo');
-// let db = mongoose.connection;
+ // Example starter JavaScript for disabling form submissions if there are invalid field
 
  (function() {
     'use strict';
     window.addEventListener('load', function() {
+        // const express = require("express");
+        // const mongoose = require('mongoose');
+
+        // let url = 'mongodb+srv://userTest:userTestPassword@cluster0.o4dh9.mongodb.net/UserTest?retryWrites=true&w=majority';
+        // mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
+        // let userInfo = require('./models/userInfo');
+        // let db = mongoose.connection;
+
+        // db.once('open', function() {
+        //     console.log('Connection was succesfull');
+        // })
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
         var loginPassword = document.getElementById('loginPassword');
@@ -86,11 +92,15 @@
         // Loop over them and prevent submission
         var validation = Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function(event) {
+            
             if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
             }
-
+            else {
+                console.log("123");
+            }
+            //console.log("1"+loginUsername.value);
             // userInfo.findOne({username: loginUsername.value}, (err, docs) => {
             //     if (err) {
             //         console.log(err);
@@ -99,11 +109,10 @@
             //         console.log('found:' + docs);
             //         var usernameErrorDiv = document.getElementById('usernameErrorMessage');
             //         var passwordErrorDiv = document.getElementById('passwordErrorMessage');
-            //         if (docs != null)  {
-            //             console.log(docs.username + ' already exists in the DB');
+            //         if (docs == null)  {
             //             event.preventDefault();
             //             event.stopPropagation();
-            //             passwordErrorDiv.innerHTML = "";
+            //             //passwordErrorDiv.innerHTML = "";
             //             if (usernameErrorDiv.innerHTML === "") {
             //                 let node = document.createTextNode ("*Username doesn't exist.");
             //                 usernameErrorDiv.appendChild(node);
@@ -111,7 +120,7 @@
             //             }
             //         }
             //         else {
-            //             usernameErrorDiv.innerHTML = "";
+            //             //usernameErrorDiv.innerHTML = "";
             //             if (loginPassword != docs.password) {
             //                 event.preventDefault();
             //                 event.stopPropagation();

@@ -1,6 +1,7 @@
 const { render } = require("ejs");
 const express = require("express");
 const mongoose = require('mongoose');
+const { updateMany } = require("./models/userInfo");
 
 let url = 'mongodb+srv://userTest:userTestPassword@cluster0.o4dh9.mongodb.net/UserTest?retryWrites=true&w=majority';
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -32,8 +33,13 @@ app.get("/garden_map", (req, res)=> res.render("garden_map"));
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
 app.get("/gardeners_list", (req, res)=> res.render("gardeners_list"));
 
-app.get("/login", (req, res) => res.render("login"))
-app.get("/signup", (req, res) => res.render("sign_up"));
+// 3 variables to handle error messages for login and signup page.
+let UEM = ""; // username error message for login page.
+let PEM = ""; // password error message for login page.
+let SUEM = ""; // username error message for sign up page.
+
+app.get("/login", (req, res) => res.render("login", {usernameErrorMessage: UEM, passwordErrorMessage: PEM}))
+app.get("/signup", (req, res) => res.render("sign_up", {signupUsernameErrorMessage: SUEM}));
 app.post("/signup", (req, res) => {
     console.log(req.body)       // Remove this line at the end.
 
@@ -45,9 +51,11 @@ app.post("/signup", (req, res) => {
             console.log('found:' + docs);
             if (docs != null)  {
                 console.log(docs.username + ' already exists in the DB');
+                SUEM = "Username already exists.";
                 res.redirect('/signup');
             }
             else {
+                SUEM = "";
                 let user = new userInfo({firstName: req.body.signupFirstName, lastName: req.body.signupLastName, 
                     email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
                     phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
@@ -80,9 +88,12 @@ app.post("/login", (req, res) => {
             console.log('found:' + docs);
             if (docs == null)  {
                 console.log("can't find user" + docs);
+                PEM = "";
+                UEM = "Username doesn't exist.";
                 res.redirect('/login');
             }
             else {
+                UEM = "";
                 if (req.body.loginPassword == docs.password) {
                     console.log('successful login! User:' + docs.username);
                     if (docs.view == 'gardener') {
@@ -94,6 +105,7 @@ app.post("/login", (req, res) => {
                 }
                 else {
                     console.log('Password does not match the username');
+                    PEM = 'Password does not match the username';
                     res.redirect('/login');
                 }
             }
