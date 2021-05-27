@@ -125,6 +125,18 @@ app.get("/gardener_profile_profile", (req, res) => {
         res.redirect('/');
     }
 });
+
+
+app.get("/landlord_profile_garden", (req, res) => {
+    if(req.session.username) {
+        res.render("landlord_profile_garden"
+        , {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL}
+        )
+    } else {
+        res.redirect('/');
+    }
+});
+
 app.get("/policies", (req, res) => {
     if(req.session.username) {
         res.render("policy_page")
