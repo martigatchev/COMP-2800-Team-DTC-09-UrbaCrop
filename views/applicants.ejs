@@ -128,18 +128,17 @@
             </thead>
             <tbody>
               <% for (let i = 0; i < arrayOfApplicantions.length; i++) { %>
-                <% let dataTarget = "#" + arrayOfApplicantions[i].applicantUsername %>
+                <% let dataTarget = "#" + arrayOfApplicantions[i].applicantUsername %>                  
+                  
                  <tr>
-                  
-                    <th scope="row"><button class="applicantRowBtn" type="button" data-bs-toggle="modal" data-bs-target=<%= dataTarget %>><%= i + 1 %></th>
-                  
+                    <th scope="row"><button class="applicantRowBtn" type="button" data-bs-toggle="modal" data-bs-target=<%= dataTarget %>><%= i + 1 %></button></th>
                     <td><%= arrayOfApplicantions[i].applicantUsername %></td>
                     <td><%= applicantInfoArray[i].lastName %></td>
                     <td><%= applicantInfoArray[i].firstName %></td>
                     <td><%= applicantInfoArray[i].rating %></td>
                     <td><%= arrayOfApplicantions[i].gardenName %></td>
                   
-                </tr>              
+                </tr>             
                 <% }; %>
             </tbody>
           </table>
@@ -178,6 +177,7 @@
                   <p id="rating" class="mb-1"><b>Rating: </b><%= applicantInfoArray[i].rating %></p>
                   <p id="numOfProjects" class="mb-1"><b>Number of Projects: </b><%= applicantInfoArray[i].numOfProjects %></p>
                   <p id="location" class="mb-1"><b>Address: </b><%= applicantInfoArray[i].address %>, <%= applicantInfoArray[i].city %></p>
+                  <p id="comment" class="mb-1"><b>Comment: </b><%= arrayOfApplicantions[i].applicantComment %></p>
                 </div>
 
                 <div class="mb-3" style="background-color: e2efdd; border-radius: 5%;">
