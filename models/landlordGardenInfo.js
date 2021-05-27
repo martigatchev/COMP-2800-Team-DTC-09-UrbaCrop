@@ -10,7 +10,7 @@ let landlordGardenSchema = new Scheme( {
     address: String, 
     plantPreferences: Array,
     paymentOptions: Array,
-    size: Number,
+    size: String,
     about: String,
 
 });

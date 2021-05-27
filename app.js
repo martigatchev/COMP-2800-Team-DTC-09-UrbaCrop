@@ -154,12 +154,16 @@ app.post("/addNewLandlordGarden", (req, res) => {
             }
             else {
                 console.log(req.body)
-                // let landlordGarden = new landlordGardenInfo({user: req.session.username, gardenName: req.body.gardenName, photo: req.body.gardenImgURL,
-                // gardenType: plantArray, size: req.body.size, about: req.body.comment})
+                let landlordGarden = new landlordGardenInfo({owner: req.session.username, gardenName: req.body.gardenName, photo: req.body.photo,
+                location: req.body.location, address: req.body.address, plantPreferences: [], paymentOptions: [],
+                size: req.body.size, about: req.body.about})
+
+                console.log(landlordGarden)
                 
 
-                // gardenerGarden.save({user: req.session.username, gardenName: req.body.gardenName, photo: req.body.gardenImgURL,
-                //     gardenType: plantArray, size: req.body.size, about: req.body.comment})
+                landlordGarden.save({owner: req.session.username, gardenName: req.body.gardenName, photo: req.body.photo,
+                    location: req.body.location, address: req.body.address, plantPreferences: [], paymentOptions: [],
+                    size: req.body.size, about: req.body.about})
                 .then(result => {
                     console.log(result)
                     res.redirect('/landlord_profile_garden');
