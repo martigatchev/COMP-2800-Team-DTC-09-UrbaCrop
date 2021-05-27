@@ -68,11 +68,11 @@
         </div>
         <div class="menu-option">
             <img src="images/guidelines.svg" alt="Guidelines Icon">
-            <a href="/policies">Farming Guidelines</a>
+            <a href="#">Farming Guidelines</a>
         </div>
         <div class="menu-option">
           <img src="images/about_us.svg" alt="About Us Icon">
-          <a href="/about_us">About Us</a>
+          <a href="about_us.html">About Us</a>
       </div>
         <div class="menu-option">
             <img src="images/settings.svg" alt="Settings Icon">
@@ -80,7 +80,7 @@
         </div>
         <div class="menu-option">
             <img src="images/logout.svg" alt="Log out Icon">
-            <a href="#">Log out</a>
+            <a href="/logout">Log out</a>
         </div>
       </div>
     </div>
@@ -93,14 +93,16 @@
     <div id="tab_section">
         
         <br>
-
-        <img src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="profile picture" width="150" height="150">
+        <% if (userImg == "") {
+          userImg = "https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg"
+        } %>
+        <img src=<%= userImg %> alt="profile picture" width="150" height="150">
       
         <br>
         <br>
 
         <h4>
-            Suaveman Jones
+            <%= userFirstName %> <%= userLastName %>
         </h4>
         <h5>
             Gardener
@@ -142,7 +144,7 @@
         <div class="card-body">
           <h5 class="card-title">Contact Info</h5>
           <p class="card-text">This card will open up and have contact info here.</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ContactInfoModal">
             Edit
           </button>
         </div>
@@ -152,7 +154,7 @@
         <div class="card-body">
           <h5 class="card-title">Plant Options:</h5>
           <p class="card-text">This card will open up and have all plant options here.</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlantInfoModal">
             Edit
           </button>
         </div>
@@ -170,13 +172,13 @@
     </div>
 
 
-    <!-- Garden Modal -->
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    <!-- Contact Info Modal -->
+    <div class="modal fade" id="ContactInfoModal" tabindex="-1" role="dialog" aria-labelledby="ContactInfoModal"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Contact Info</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -187,21 +189,44 @@
           <div class="modal-body">
             
             <form>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <div>
+                First Name: 
+                <button>Edit</button>
               </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <div>
+                Last Name: 
+                <button>Edit</button>
               </div>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              <div>
+                Email Address: 
+                <button>Edit</button>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <div>
+                Phone Number: 
+                <button>Edit</button>
+              </div>
+
+              <br>
+
+              <div>
+                Social Links: 
+                <button>Edit</button>
+              </div>
+
+              <br>
+
             </form>
+
+            Bio:
+
+            <button>Edit</button>
+
+            <form action="/action_page.php" id="about_bio">
+              <textarea rows="4" cols="50" name="comment" form="about_bio" placeholder="Enter text here..."></textarea>
+              <input type="submit">
+            </form>
+            <br>
+            
 
           </div>
           <div class="modal-footer">
@@ -211,6 +236,102 @@
         </div>
       </div>
     </div>
+
+
+  <!-- Plant Info Modal -->
+  <div class="modal fade" id="PlantInfoModal" tabindex="-1" role="dialog" aria-labelledby="PlantInfoModal"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Plant Info</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <!-- MODAL BODY -->
+
+      <div class="modal-body">
+        
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Plant</h5>
+              <p class="card-text">This card will contain plant info.</p>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ContactInfoModal">
+                Edit
+              </button>
+            </div>
+          </div>
+
+          <br>
+
+          <button>Add more plants</button>
+
+          <br>
+          <br>
+
+          <div class="plant_options">
+
+            <form action="/action_page.php">
+              <label for="plants">Choose a plant:</label>
+              <select id="plants" name="plants">
+                <option value="Apple">Apple</option>
+                <option value="Beets">Beets</option>
+                <option value="Bell Peppers">Bell Peppers</option>
+                <option value="Blackberries">Blackberries</option>
+                <option value="Cabbage">Cabbage</option>
+                <option value="Carrots">Carrots</option>
+                <option value="Chives">Chives</option>
+                <option value="Garlic">Garlic</option>
+                <option value="Gooseberry">Gooseberry</option>
+                <option value="Grape">Grape</option>
+                <option value="Green Beans">Green Beans</option>
+                <option value="Kale">Kale</option>
+                <option value="Lettuce">Lettuce</option>
+                <option value="Onions">Onions</option>
+                <option value="Pear">Pear</option>
+                <option value="Potato">Potato</option>
+                <option value="Radishes">Radishes</option>
+                <option value="Raspberry">Raspberry</option>
+                <option value="Rhubarb">Rhubarb</option>
+                <option value="Strawberries">Strawberries</option>
+                <option value="Tomatoes">Tomatoes</option>
+                <option value="Squash">Squash</option>
+                <option value="Zucchini">Zucchini</option>
+              </select>
+              <input type="submit" class="btn btn-success dropdown-toggle">
+  
+              <br>
+  
+              Or
+  
+              <br>
+  
+              <form action="/action_page.php">
+                <label for="custon_plant">Input your own plant:</label>
+                <input type="text" id="custon_plant" name="custon_plant">
+                <input type="submit" class="btn btn-success dropdown-toggle">
+              </form>
+
+          </div>
+
+          
+
+            
+
+
+        
+          
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Bottom Nav Bar -->
 
@@ -222,7 +343,7 @@
         </div>
       </div>
       <div class="col">
-        <a href="/garden_map">
+        <a href="garden_map.html">
           <div class="col_content">
             <img src="images/Discovery.svg">
           </div>
