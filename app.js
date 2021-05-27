@@ -135,6 +135,108 @@ app.get("/gardener_profile_profile", (req, res) => {
         res.redirect('/');
     }
 });
+
+
+
+app.get("/landlord_profile_profile", (req, res) => {
+    if(req.session.username) {
+        res.render("landlord_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL})
+    } else {
+        res.redirect('/');
+    }
+});
+
+app.get("/landlord_profile_garden", (req, res) => {
+    if(req.session.username) {
+        landlordGardenInfo.find({owner: req.session.username}, (err, docs) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                console.log('found' + docs);
+                console.log('userFirstName' + req.session.firstName)
+                res.render("landlord_profile_garden", {userFirstName: req.session.firstName, userLastName: req.session.lastName, 
+                userImg: req.session.imgURL, gardensArray: docs});
+            }
+        })
+    } else {
+        res.redirect('/');
+    }
+});
+
+app.post("/addNewLandlordGarden", (req, res) => {
+    console.log(req.body);
+    
+    landlordGardenInfo.findOne({user: req.session.username, gardenName: req.body.gardenName}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log('found:' + docs);
+            if (docs != null)  {
+                console.log(docs.user + docs.gardenName + ' already exists in the DB');
+                alert('The garden you are trying to add already exists in your gardens!');
+                res.redirect('/gardener_profile_profile');
+            }
+            else {
+                console.log(req.body)
+
+                let plantArray = [];
+                let paymentArray = [];
+
+                if(req.body.fruits == '') {
+                    plantArray.push("fruits");
+                }
+                if(req.body.herb == '') {
+                    plantArray.push("herb");
+                }
+                if(req.body.flowers == '') {
+                    plantArray.push("flowers");
+                }
+                if(req.body.trees == '') {
+                    plantArray.push("trees");
+                }
+                if(req.body.vegetables == '') {
+                    plantArray.push("vegetables");
+                }
+
+                if (req.body.cropShare == '') {
+                    paymentArray.push("cropShare")
+                }
+                if (req.body.rent == '') {
+                    paymentArray.push("rent")
+                }
+                if (req.body.volunteer == '') {
+                    paymentArray.push("volunteer")
+                }
+
+                let landlordGarden = new landlordGardenInfo({owner: req.session.username, gardenName: req.body.gardenName, photo: req.body.photo,
+                location: req.body.location, address: req.body.address, plantPreferences: plantArray, paymentOptions: paymentArray,
+                size: req.body.size, about: req.body.about})
+
+                landlordGarden.save({owner: req.session.username, gardenName: req.body.gardenName, photo: req.body.photo,
+                    location: req.body.location, address: req.body.address, plantPreferences: [], paymentOptions: [],
+                    size: req.body.size, about: req.body.about})
+
+                .then(result => {
+                    console.log(result)
+                    res.redirect('/landlord_profile_garden');
+                })
+                .catch(error => console.error(error))
+            }
+        }
+    })
+});
+
+app.get("/landlord_social", (req, res) => {
+    if(req.session.username) {
+        res.render("landlord_social");
+    } else {
+        res.redirect('/');
+    }
+});
+
+
 app.get("/policies", (req, res) => {
     if(req.session.username) {
         res.render("policy_page")
