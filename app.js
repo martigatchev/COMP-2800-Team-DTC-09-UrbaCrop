@@ -72,7 +72,6 @@ app.get("/gardener_profile_garden", (req, res) => {
     }
 });
 
-
 app.post("/addNewGarden", (req, res) => {
     console.log(req.body);
     
@@ -119,8 +118,6 @@ app.post("/addNewGarden", (req, res) => {
     })
 });
 
-
-
 app.get("/gardener_profile_profile", (req, res) => {
     if(req.session.username) {
         res.render("gardener_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL})
@@ -129,7 +126,6 @@ app.get("/gardener_profile_profile", (req, res) => {
     }
 });
 
-
 app.get("/landlord_profile_profile", (req, res) => {
     if(req.session.username) {
         res.render("landlord_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL})
@@ -137,7 +133,6 @@ app.get("/landlord_profile_profile", (req, res) => {
         res.redirect('/');
     }
 });
-
 
 app.get("/landlord_profile_garden", (req, res) => {
     if(req.session.username) {
@@ -156,7 +151,6 @@ app.get("/landlord_profile_garden", (req, res) => {
         res.redirect('/');
     }
 });
-
 
 app.post("/addNewLandlordGarden", (req, res) => {
     console.log(req.body);
