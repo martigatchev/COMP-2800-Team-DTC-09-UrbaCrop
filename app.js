@@ -36,6 +36,7 @@ let PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {
     console.log("Running on port " + PORT);
 });
+<<<<<<< HEAD
 
 app.get("/", (req, res)=> res.render("login"));
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
@@ -50,6 +51,8 @@ app.get("/gardeners_list", (req, res)=> {
         }
     })
     
+=======
+>>>>>>> 1063fd4ab8fcf54f109d9fed9652a782e260ea8e
 app.get("/about_us", (req, res) => {
     if(req.session.username) {
         res.render("about_us");
@@ -174,8 +177,14 @@ app.post("/gardeners_list", (req, res) => {
         res.redirect('/');
     }
 })
-app.get("/login", (req, res) => res.render("login"))
-app.get("/signup", (req, res) => res.render("sign_up"));
+
+// 3 variables to handle error messages for login and signup page.
+let UEM = ""; // username error message for login page.
+let PEM = ""; // password error message for login page.
+let SUEM = ""; // username error message for sign up page.
+
+app.get("/", (req, res) => res.render("login", {usernameErrorMessage: UEM, passwordErrorMessage: PEM}))
+app.get("/signup", (req, res) => res.render("sign_up", {signupUsernameErrorMessage: SUEM}));
 app.post("/signup", (req, res) => {
     console.log(req.body)       // Remove this line at the end.
 
@@ -187,9 +196,11 @@ app.post("/signup", (req, res) => {
             console.log('found:' + docs);
             if (docs != null)  {
                 console.log(docs.username + ' already exists in the DB');
+                SUEM = "Username already exists.";
                 res.redirect('/signup');
             }
             else {
+                SUEM = "";
                 let user = new userInfo({firstName: req.body.signupFirstName, lastName: req.body.signupLastName, 
                     email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
                     phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
@@ -204,7 +215,7 @@ app.post("/signup", (req, res) => {
 
                 .then(result => {
                     console.log(result)
-                    res.redirect('/login');
+                    res.redirect('/');
                 })
                 .catch(error => console.error(error))
             }
@@ -212,7 +223,7 @@ app.post("/signup", (req, res) => {
     })
 })
 
-app.post("/login", (req, res) => {
+app.post("/", (req, res) => {
     console.log(req.body)       // Remove this line at the end.
     userInfo.findOne({username: req.body.loginUsername}, (err, docs) => {
         if (err) {
@@ -222,9 +233,12 @@ app.post("/login", (req, res) => {
             console.log('found:' + docs);
             if (docs == null)  {
                 console.log("can't find user" + docs);
-                res.redirect('/login');
+                PEM = "";
+                UEM = "Username doesn't exist.";
+                res.redirect('/');
             }
             else {
+                UEM = "";
                 if (req.body.loginPassword == docs.password) {
                     console.log('successful login! User:' + docs.username);
                     req.session.username = docs.username;
@@ -242,7 +256,8 @@ app.post("/login", (req, res) => {
                 }
                 else {
                     console.log('Password does not match the username');
-                    res.redirect('/login');
+                    PEM = 'Password does not match the username';
+                    res.redirect('/');
                 }
             }
         }
