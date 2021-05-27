@@ -338,6 +338,15 @@ app.post("/", (req, res) => {
     })
 })
 
+app.get("/landlord_social", (req, res) => {
+    if(req.session.username) {
+        res.render("landlord_social");
+    } else {
+        res.redirect('/');
+    }
+});
+
+
 app.get("/logout", (req, res) => {
     req.session.destroy(() => res.redirect('/'));
 })
