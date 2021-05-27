@@ -38,6 +38,7 @@ app.listen(PORT, function() {
 });
 
 app.get("/", (req, res)=> res.render("login"));
+
 app.get("/about_us", (req, res) => {
     if(req.session.username) {
         res.render("about_us");
@@ -45,6 +46,7 @@ app.get("/about_us", (req, res) => {
         res.redirect('/');
     }
 });
+
 app.get("/garden_map.html", (req, res) => {
     if(req.session.username) {
         res.render("garden_map");
@@ -52,6 +54,7 @@ app.get("/garden_map.html", (req, res) => {
         res.redirect('/');
     }
 });
+
 app.get("/gardener_profile_garden", (req, res) => {
     if(req.session.username) {
         gardenerGardenInfo.find({user: req.session.username}, (err, docs) => {
@@ -126,12 +129,30 @@ app.get("/gardener_profile_profile", (req, res) => {
     }
 });
 
+// app.get("/landlord_profile_garden", (req, res) => {
+//     if(req.session.username) {
+//         console.log(req.session.username)
+//         res.render("landlord_profile_garden")
+//     } else {
+//         res.redirect('/');
+//     }
+// });
+
+
 
 app.get("/landlord_profile_garden", (req, res) => {
     if(req.session.username) {
-        res.render("landlord_profile_garden"
-        , {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL}
-        )
+        landlordGardenInfo.find({owner: req.session.username}, (err, docs) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                console.log('found' + docs);
+                console.log('userFirstName' + req.session.firstName)
+                res.render("landlord_profile_garden", {userFirstName: req.session.firstName, userLastName: req.session.lastName, 
+                userImg: req.session.imgURL, gardensArray: docs});
+            }
+        })
     } else {
         res.redirect('/');
     }
@@ -154,16 +175,44 @@ app.post("/addNewLandlordGarden", (req, res) => {
             }
             else {
                 console.log(req.body)
-                let landlordGarden = new landlordGardenInfo({owner: req.session.username, gardenName: req.body.gardenName, photo: req.body.photo,
-                location: req.body.location, address: req.body.address, plantPreferences: [], paymentOptions: [],
-                size: req.body.size, about: req.body.about})
 
-                console.log(landlordGarden)
-                
+                let plantArray = [];
+                let paymentArray = [];
+
+                if(req.body.fruits == '') {
+                    plantArray.push("fruits");
+                }
+                if(req.body.herb == '') {
+                    plantArray.push("herb");
+                }
+                if(req.body.flowers == '') {
+                    plantArray.push("flowers");
+                }
+                if(req.body.trees == '') {
+                    plantArray.push("trees");
+                }
+                if(req.body.vegetables == '') {
+                    plantArray.push("vegetables");
+                }
+
+                if (req.body.cropShare == '') {
+                    paymentArray.push("cropShare")
+                }
+                if (req.body.rent == '') {
+                    paymentArray.push("rent")
+                }
+                if (req.body.volunteer == '') {
+                    paymentArray.push("volunteer")
+                }
+
+                let landlordGarden = new landlordGardenInfo({owner: req.session.username, gardenName: req.body.gardenName, photo: req.body.photo,
+                location: req.body.location, address: req.body.address, plantPreferences: plantArray, paymentOptions: paymentArray,
+                size: req.body.size, about: req.body.about})
 
                 landlordGarden.save({owner: req.session.username, gardenName: req.body.gardenName, photo: req.body.photo,
                     location: req.body.location, address: req.body.address, plantPreferences: [], paymentOptions: [],
                     size: req.body.size, about: req.body.about})
+
                 .then(result => {
                     console.log(result)
                     res.redirect('/landlord_profile_garden');

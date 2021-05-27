@@ -99,14 +99,16 @@
       <br>
 
       <div class="profile_picture" id="ani_test_image">
-        <img id="profile_img" src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="profile picture">
+        <% if (userImg=="" ) { userImg="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" }%>
+        <img src=<%=userImg %> alt="profile picture" width="150" height="150">
       </div>
 
       <br>
 
       <div id="profile_name">
         <h4 id="profile_name_title">
-          Bourgeoisie Bob
+          <%= userFirstName %>
+                <%= userLastName %>
         </h4>
         <h5 id="profile_name_type">
           Landlord
@@ -145,6 +147,116 @@
     <br>
 
 
+<!-- GARDENS ADDED FROM DATABASE -->
+
+
+<% for(let i=0; i < gardensArray.length; i++) { %>
+  <div class="card existing_garden_card mb-3">
+    <div class="card-body">
+
+      <h5 class="card-title">
+        <%= gardensArray[i].gardenName %>
+      </h5>
+
+      <% let dataTarget="#" + gardensArray[i].gardenName %>
+        <button class="garden_image_button" type="button" data-toggle="modal" data-target=<%=dataTarget %>>
+
+          <% if (gardensArray[i].photo=='' ) { %>
+            <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden"
+              width="100%">
+            <% } else { %>
+              <img src=<%=gardensArray[i].photo %> alt=<%= gardensArray[i].gardenName%> width="100%">
+                <%} %>
+
+    </div>
+  </div>
+
+  <!-- Existing Garden View Modal -->
+  <div class="modal fade" id=<%=gardensArray[i].gardenName %> tabindex="-1" role="dialog"
+    aria-labelledby="viewGarden"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="existingGardenTitle">
+            <%= gardensArray[i].gardenName %>
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!-- MODAL BODY -->
+
+        <div class="modal-body">
+
+          <% if (gardensArray[i].photo=='' ) { %>
+            <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden"
+              width="100%">
+            <% } else { %>
+              <img src=<%=gardensArray[i].photo %> alt=<%= gardensArray[i].gardenName%> width="100%">
+                <%} %>
+
+                  <br>
+                  <br>
+
+                  Plant Preferences:
+
+                  <div id="garden_type_indicator">
+
+                    <ul>
+                      <% for (let j=0; j < gardensArray[i].plantPreferences.length; j++) { %>
+                        <li>
+                          <%=gardensArray[i].plantPreferences[j] %>
+                        </li>
+                        <% } %>
+                    </ul>
+
+                  </div>
+
+                  Payment Options:
+
+                  <div id="payment_type_indicator">
+
+                    <ul>
+                      <% for (let j=0; j < gardensArray[i].paymentOptions.length; j++) { %>
+                        <li>
+                          <%=gardensArray[i].paymentOptions[j] %>
+                        </li>
+                        <% } %>
+                    </ul>
+
+                  </div>
+
+                  <div id="garden_size_indicator">
+
+                    Size: <%= gardensArray[i].size %>
+
+                  </div>
+
+                  <br>
+
+                  <b>About the garden:</b>
+
+                  <div id="garden_bio_indicator">
+
+                    <%= gardensArray[i].about %>
+
+                  </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% }%>
+
+<!-- GARDENS ADDED FROM DATABASE -->
+
+
     <div class="card existing_garden_card">
       <div class="card-body">
         <h5 class="card-title">Marpole Garden</h5>
@@ -155,11 +267,6 @@
 
         <p class="card-text"></p>
 
-        <!-- Button trigger modal -->
-
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#existingGarden">
-          Edit
-        </button>
 
       </div>
     </div>
@@ -179,189 +286,8 @@
       </div>
     </div>
 
-    <!-- Existing Garden View Modal -->
-    <div class="modal fade" id="viewGarden" tabindex="-1" role="dialog" aria-labelledby="viewGarden"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="existingGardenTitle">Helsinki Garden</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-          <!-- MODAL BODY -->
-
-          <div class="modal-body">
-
-            <form>
-
-              <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden" width="100%">              
-
-              <br>
-              <br>
-
-              Garden type:
-
-              <div id="garden_type_indicator">
-
-                <ul>
-                  <li>
-                    Trees
-                  </li>
-                  <li>
-                    Flowers
-                  </li>
-                </ul>
-
-              </div>
-
-              <div id="garden_size_indicator">
-
-                Size: 10 sq m.
-
-              </div>
-
-              <br>
-
-              <b>About the garden:</b>
-
-              <div id="garden_bio_indicator">
-
-                It's a great little garden in sunny Helsinki!
-
-              </div>
-        
-            </form>
-
-          </div>
-        
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Existing Garden Edit Modal -->
-    <div class="modal fade" id="existingGarden" tabindex="-1" role="dialog" aria-labelledby="existingGarden"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="existingGardenTitle">Helsinki Garden</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-          <!-- MODAL BODY -->
-
-          <div class="modal-body">
-
-            <br>
-
-            <form>
-
-              <form action="/action_page.php" id="usrform">
-                Name: <input type="text" name="usrname">
-                <input type="submit">
-              </form>
-
-              <br>
-
-              <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden" width="100%">              
-
-              <br>
-              <br>
-
-              <button>Add a photo</button>
-
-              <br>
-              <br>
-
-              Garden type:
-
-              <div id="garden_type_indicator">
-
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Vegetables
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Fruits
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Trees
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Flowers
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Herb
-                  </label>
-                </div>
-
-              </div>
-
-             
-              <br>
-
-              <div id="garden_size_indicator">
-
-                <form action="/action_page.php">
-                  <label for="fname">Size:</label> 
-                  <input type="text" id="fname" name="fname"> sq m.
-                  <br>
-                </form>
-                
-              </div>
-
-              <br>
-
-              About the garden:
-
-              <div id="garden_bio_indicator">
-
-                <textarea rows="4" cols="50" name="comment" form="usrform" placeholder="Enter short description here..."></textarea>
-
-              </div>
-
-              
-              
-        
-            </form>
-
-          </div>
-        
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
+    
+    
     <!-- Add New Garden Modal -->
     <div class="modal fade" id="newGarden" tabindex="-1" role="dialog" aria-labelledby="newGarden"
       aria-hidden="true">
