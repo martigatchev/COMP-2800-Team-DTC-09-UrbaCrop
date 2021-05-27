@@ -70,27 +70,6 @@ function initMap() {
   });
 }
 
-/**const eqfeed_callback = function (results) {
-  var markers = Array();
-  var infowindow = new google.maps.InfoWindow({
-    content: "<b>Hello</b>",
-  });
-  //results.features.length
-  for (let i = 0; i < results.features.length; i++) {
-    const coords = results.features[i].geometry.coordinates;
-    const latLng = new google.maps.LatLng(coords[1], coords[0]);
-    let marker = new google.maps.Marker({
-      position: latLng,
-      map: map,
-      clickable: true,
-    });
-    google.maps.event.addListener(marker, 'click', (function (marker) {
-      return function () {
-          infowindow.open(map, marker);
-          google.maps.event.addListener(infowindow,'domready');
-      };
-   })(marker));
-  }
-};*/
+function
 
 main();

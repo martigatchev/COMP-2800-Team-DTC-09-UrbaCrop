@@ -18,7 +18,7 @@ let app = express();
     app.use(express.urlencoded({extended: true}));
     app.use("/scripts", express.static('scripts'));
     app.use("/data", express.static('data'));
-    app.use("/public", express.static('public')); 
+    app.use("/public", express.static('public'));
     app.use("/styles", express.static("styles"));
     app.use("/images", express.static("images"));
     app.use("/favicon_package", express.static("favicon_package"));
@@ -30,29 +30,12 @@ let app = express();
         rolling: true,
     }));
 
-    
 let PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function() {
     console.log("Running on port " + PORT);
 });
-<<<<<<< HEAD
 
-app.get("/", (req, res)=> res.render("login"));
-app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
-app.get("/policies", (req, res)=> res.render("policy_page"));
-app.get("/gardeners_list", (req, res)=> {
-    userInfo.find({view: 'gardener'}, (err, docs) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.render("gardeners_list", {arrayOfGardeners: docs});
-        }
-    })
-    
-=======
->>>>>>> 1063fd4ab8fcf54f109d9fed9652a782e260ea8e
 app.get("/about_us", (req, res) => {
     if(req.session.username) {
         res.render("about_us");
@@ -87,7 +70,7 @@ app.get("/gardener_profile_garden", (req, res) => {
 
 app.post("/addNewGarden", (req, res) => {
     console.log(req.body);
-    
+
     gardenerGardenInfo.findOne({user: req.session.username, gardenName: req.body.gardenName}, (err, docs) => {
         if (err) {
             console.log(err);
@@ -201,15 +184,15 @@ app.post("/signup", (req, res) => {
             }
             else {
                 SUEM = "";
-                let user = new userInfo({firstName: req.body.signupFirstName, lastName: req.body.signupLastName, 
-                    email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
-                    phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
+                let user = new userInfo({firstName: req.body.signupFirstName, lastName: req.body.signupLastName,
+                    email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword,
+                    phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber,
                     postalCode: req.body.signupPostalCode, address: req.body.signupAddress, city: req.body.signupCity,
                     view: req.body.signupOption, imgURL: ""});
 
-                user.save({firstName: req.body.signupFirstName, lastName: req.body.signupLastName, 
-                    email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
-                    phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
+                user.save({firstName: req.body.signupFirstName, lastName: req.body.signupLastName,
+                    email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword,
+                    phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber,
                     postalCode: req.body.signupPostalCode, address: req.body.signupAddress, city: req.body.signupCity,
                     view: req.body.signupOption, imgURL: ""})
 

@@ -42,7 +42,7 @@
           <img id="topnav-logo" class="navbar-brand" src="images/leaf_logo.svg" alt="Green leaf logo">
         </button>
       </div>
-      
+
     </div>
   </nav>
 
@@ -197,7 +197,7 @@
 
             <form>
 
-              <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden" width="100%">              
+              <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden" width="100%">
 
               <br>
               <br>
@@ -232,11 +232,11 @@
                 It's a great little garden in sunny Helsinki!
 
               </div>
-        
+
             </form>
 
           </div>
-        
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
@@ -271,7 +271,7 @@
 
               <br>
 
-              <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden" width="100%">              
+              <img src="https://media.gardenista.com/wp-content/uploads/2018/04/desert-gardens-cactus-layaered-plantings-stucco-steve-martino-book-733x489.jpg" alt="Helsinki Garden" width="100%">
 
               <br>
               <br>
@@ -291,28 +291,28 @@
                     Vegetables
                   </label>
                 </div>
-  
+
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
                     Fruits
                   </label>
                 </div>
-  
+
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
                     Trees
                   </label>
                 </div>
-  
+
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
                     Flowers
                   </label>
                 </div>
-  
+
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
@@ -322,17 +322,17 @@
 
               </div>
 
-             
+
               <br>
 
               <div id="garden_size_indicator">
 
                 <form action="/action_page.php">
-                  <label for="fname">Size:</label> 
+                  <label for="fname">Size:</label>
                   <input type="text" id="fname" name="fname"> sq m.
                   <br>
                 </form>
-                
+
               </div>
 
               <br>
@@ -345,13 +345,13 @@
 
               </div>
 
-              
-              
-        
+
+
+
             </form>
 
           </div>
-        
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
@@ -389,9 +389,9 @@
               </form>
 
               <br>
-              
+
               <button>Add a photo</button>
-              
+
               <br>
               <br>
 
@@ -424,7 +424,7 @@
               <br>
 
               <form action="/action_page.php" id="usrform">
-                Address: <input type="text" name="usrname">
+                Address: <input type="text" name="usrname" id="addressSearch">
                 <input type="submit" class="btn btn-success dropdown-toggle">
               </form>
 
@@ -440,28 +440,28 @@
                     Vegetables
                   </label>
                 </div>
-  
+
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
                     Fruits
                   </label>
                 </div>
-  
+
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
                     Trees
                   </label>
                 </div>
-  
+
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
                     Flowers
                   </label>
                 </div>
-  
+
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
@@ -484,14 +484,14 @@
                     Crop Share
                   </label>
                 </div>
-  
+
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
                     Rent
                   </label>
                 </div>
-  
+
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
@@ -501,17 +501,17 @@
 
               </div>
 
-             
+
               <br>
 
               <div id="garden_size_indicator">
 
                 <form action="/action_page.php">
-                  <label for="fname">Size:</label> 
+                  <label for="fname">Size:</label>
                   <input type="text" id="fname" name="fname"> sq m.
                   <br>
                 </form>
-                
+
               </div>
 
               <br>
@@ -524,9 +524,9 @@
 
               </div>
 
-              
-              
-        
+
+
+
             </form>
 
           </div>
@@ -592,6 +592,9 @@
     crossorigin="anonymous"></script>
 
   <!-- Custom Javascript -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHNVYypB7hoi1m9sN6zVZ1manCwx81Whc&libraries=places&callback=initMap">
+</script>
   <script src="./scripts/gardener_profile.js"></script>
 
 </body>
