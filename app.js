@@ -8,6 +8,7 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 let userInfo = require('./models/userInfo');
 let landlordGardenInfo = require('./models/landlordGardenInfo');
 let gardenerGardenInfo = require('./models/gardenerGardenInfo');
+let applicationInfo = require('./models/applicationInfo');
 let db = mongoose.connection;
 
 db.once('open', function() {
@@ -182,13 +183,13 @@ app.post("/signup", (req, res) => {
                     email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
                     phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
                     postalCode: req.body.signupPostalCode, address: req.body.signupAddress, city: req.body.signupCity,
-                    view: req.body.signupOption, imgURL: ""});
+                    view: req.body.signupOption, imgURL: "", rating: 0.0, numOfProjects: 0});
 
                 user.save({firstName: req.body.signupFirstName, lastName: req.body.signupLastName, 
                     email: req.body.signupEmail, username: req.body.signupUsername, password: req.body.signupPassword, 
                     phoneNumber: req.body.signupPhoneNumber, houseNumber: req.body.signupHouseNumber, 
                     postalCode: req.body.signupPostalCode, address: req.body.signupAddress, city: req.body.signupCity,
-                    view: req.body.signupOption, imgURL: ""})
+                    view: req.body.signupOption, imgURL: "", rating: 0.0, numOfProjects: 0})
 
                 .then(result => {
                     console.log(result)
@@ -237,12 +238,36 @@ app.post("/login", (req, res) => {
     })
 })
 
-app.get("/logout", (req, res) => {
-    req.session.destroy(() => res.redirect('/'));
+app.get("/applicants", (req, res) => {
+    if(req.session.username) {
+        applicationInfo.find({ownerUsername: req.session.username}, (err, docs1) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                let arrayOfApplicantInfo = [];          
+                for (let i = 0; i < docs1.length; i++) {
+                    userInfo.findOne({username: docs1[i].applicantUsername}, (err, docs2) => {
+                        if (err) {
+                            console.log(err);
+                        }
+                        else {
+                            arrayOfApplicantInfo.push(docs2);
+                        }
+                    })
+                }
+                setTimeout(function(){res.render("applicants", {arrayOfApplicantions: docs1, applicantInfoArray: arrayOfApplicantInfo}); }, 500);
+            }
+        })
+    } else {
+        res.redirect('/');
+    }
 })
 
 
-
+app.get("/logout", (req, res) => {
+    req.session.destroy(() => res.redirect('/'));
+})
 
 
 // The next app.use should be the last line of code on this page.

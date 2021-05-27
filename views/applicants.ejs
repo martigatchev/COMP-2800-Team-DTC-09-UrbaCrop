@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <!--<link rel="stylesheet" href="./styles/index.css">-->
+    <link rel="stylesheet" href="./styles/index.css">
 
     <!-- Favicon Links -->
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon_package/apple-touch-icon.png">
@@ -128,19 +128,74 @@
             </thead>
             <tbody>
               <% for (let i = 0; i < arrayOfApplicantions.length; i++) { %>
-                <tr>
-                    <th scope="row"><%= i + 1 %></th>
+                <% let dataTarget = "#" + arrayOfApplicantions[i].applicantUsername %>
+                 <tr>
+                  
+                    <th scope="row"><button class="applicantRowBtn" type="button" data-bs-toggle="modal" data-bs-target=<%= dataTarget %>><%= i + 1 %></th>
+                  
                     <td><%= arrayOfApplicantions[i].applicantUsername %></td>
-                    <td><%= arrayOfApplicantions[i].applicantLastName %></td>
-                    <td><%= arrayOfApplicantions[i].applicantFirstName %></td>
-                    <td><%= arrayOfApplicantions[i].rating %></td>
-                    <td><%= arrayOfApplicantions[i].gardenName</td>
-                </tr>
+                    <td><%= applicantInfoArray[i].lastName %></td>
+                    <td><%= applicantInfoArray[i].firstName %></td>
+                    <td><%= applicantInfoArray[i].rating %></td>
+                    <td><%= arrayOfApplicantions[i].gardenName %></td>
+                  
+                </tr>              
                 <% }; %>
             </tbody>
           </table>
-
       </div>
+      <% for (let i = 0; i < arrayOfApplicantions.length; i++) { %>
+        <!-- Applicants View Modal -->
+        <div class="modal fade" id=<%= arrayOfApplicantions[i].applicantUsername %> tabindex="-1" role="dialog" aria-labelledby="viewApplicant"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="applicantsModelTitle"><%= applicantInfoArray[i].firstName %> <%= applicantInfoArray[i].lastName %></h4>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <!-- MODAL BODY -->
+
+              <div class="modal-body">
+
+                <div class="mb-3">
+                  <% if (applicantInfoArray[i].imgURL == '') { %>
+                  <img src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="DefaultIMG" width="100%">
+                <% } 
+                else { %>
+                  <img src=<%= applicantInfoArray[i].imgURL %> alt=<%= applicantInfoArray[i].username %> width="100%">
+                <%} %>
+                </div>
+                  
+                <div class="mb-3" style="background-color: e2efdd; border-radius: 5%;">
+                  <div class="mb-1 text-center">
+                    <h4>Applicant Information</h4>
+                  </div>                  
+                  <p id="username" class="mb-1"><b>Username: </b><%= arrayOfApplicantions[i].applicantUsername %></p>
+                  <p id="rating" class="mb-1"><b>Rating: </b><%= applicantInfoArray[i].rating %></p>
+                  <p id="numOfProjects" class="mb-1"><b>Number of Projects: </b><%= applicantInfoArray[i].numOfProjects %></p>
+                  <p id="location" class="mb-1"><b>Address: </b><%= applicantInfoArray[i].address %>, <%= applicantInfoArray[i].city %></p>
+                </div>
+
+                <div class="mb-3" style="background-color: e2efdd; border-radius: 5%;">
+                  <div class="mb-1 text-center">
+                    <h4>Contact Information</h4>
+                  </div>
+                  <p id="email" class="mb-1"><b>Email: </b><%= applicantInfoArray[i].email %></p>
+                  <p id="phone" class="mb-1"><b>Phone Number: </b><%= applicantInfoArray[i].phoneNumber %></p>
+                </div>
+            
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }; %>
       
 
       <div class="container-fluid" id="bottom_grid">

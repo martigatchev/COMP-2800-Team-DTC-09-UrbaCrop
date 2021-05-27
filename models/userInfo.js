@@ -6,15 +6,17 @@ let userInfoSchema = new Scheme( {
     firstName: String,
     lastName: String,
     email: String,
-    username : String, 
+    username : String,
     password : String,
     phoneNumber: Number,
     houseNumber: Number,
-    postalCode: String,
+    postalCode: String,  
     address: String,
-    signupCity: String,
+    city: String,
     view: String,
-    imgURL: String
+    imgURL: String,
+    rating: Number,
+    numOfProjects: Number
 });
 
 module.exports = mongooose.model('userInfo', userInfoSchema);
