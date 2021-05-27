@@ -34,9 +34,9 @@ app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
 app.get("/gardeners_list", (req, res)=> res.render("gardeners_list"));
 
 // 3 variables to handle error messages for login and signup page.
-let UEM = ""; // username error message for login page.
-let PEM = ""; // password error message for login page.
-let SUEM = ""; // username error message for sign up page.
+let UEM = ""; // username error message for login page
+let PEM = ""; // password error message for login page
+let SUEM = ""; // username error message for sign up page
 
 app.get("/login", (req, res) => res.render("login", {usernameErrorMessage: UEM, passwordErrorMessage: PEM}))
 app.get("/signup", (req, res) => res.render("sign_up", {signupUsernameErrorMessage: SUEM}));
