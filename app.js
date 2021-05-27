@@ -37,8 +37,6 @@ app.listen(PORT, function() {
     console.log("Running on port " + PORT);
 });
 
-app.get("/", (req, res)=> res.render("login"));
-
 app.get("/about_us", (req, res) => {
     if(req.session.username) {
         res.render("about_us");
