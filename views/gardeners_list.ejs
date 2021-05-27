@@ -135,19 +135,68 @@
             </thead>
             <tbody>
               <% for (let i = 0; i < arrayOfGardeners.length; i++) { %>
+                <% let dataTarget = "#" + arrayOfGardeners[i].username %>    
                 <tr>
-                    <th scope="row"><%= i + 1 %></th>
+                  <th scope="row"><button class="gardenerRowBtn" type="button" data-bs-toggle="modal" data-bs-target=<%= dataTarget %>><%= i + 1 %></button></th>
                     <td><%= arrayOfGardeners[i].lastName %></td>
                     <td><%= arrayOfGardeners[i].firstName %></td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td><%= arrayOfGardeners[i].rating %></td>
+                    <td><%= arrayOfGardeners[i].numOfProjects %></td>
                 </tr>
                 <% }; %>
             </tbody>
           </table>
+        </div>
+    <% for (let i = 0; i < arrayOfGardeners.length; i++) { %>
+      <!-- Gardener View Modal -->
+      <div class="modal fade" id=<%= arrayOfGardeners[i].username %> tabindex="-1" role="dialog" aria-labelledby="viewGardener"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="gardenerModelTitle"><%= arrayOfGardeners[i].firstName %> <%= arrayOfGardeners[i].lastName %></h4>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
+            <!-- MODAL BODY -->
+
+            <div class="modal-body">
+              <div class="mb-3 p-2 rounded" style="background-color: #e2efdd;">
+                <div class="mb-2 text-center">
+                  <h4>Gardener Information</h4>
+                </div>
+                <div class="mb-3">
+                  <% if (arrayOfGardeners[i].imgURL == '') { %>
+                  <img src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="DefaultIMG" width="100%" class="rounded-3 img-fluid">
+                <% } 
+                else { %>
+                  <img src=<%= arrayOfGardeners[i].imgURL %> alt=<%= arrayOfGardeners[i].username %> width="100%" class="rounded-3 img-fluid">
+                <%} %>
+                </div>        
+                <p id="username" class="mb-1"><b>Username: </b><%= arrayOfGardeners[i].username %></p>
+                <p id="rating" class="mb-1"><b>Rating: </b><%= arrayOfGardeners[i].rating %></p>
+                <p id="numOfProjects" class="mb-1"><b>Number of Projects: </b><%= arrayOfGardeners[i].numOfProjects %></p>
+                <p id="location" class="mb-1"><b>Address: </b><%= arrayOfGardeners[i].address %>, <%= arrayOfGardeners[i].city %></p>
+              </div>
+
+              <div class="mb-3 p-2 rounded" style="background-color: #e2efdd;">
+                <div class="mb-1 text-center">
+                  <h4>Contact Information</h4>
+                </div>
+                <p id="email" class="mb-1"><b>Email: </b><%= arrayOfGardeners[i].email %></p>
+                <p id="phone" class="mb-1"><b>Phone Number: </b><%= arrayOfGardeners[i].phoneNumber %></p>
+              </div>
+          
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      
+    <% }; %>
 
       <div class="container-fluid" id="bottom_grid">
         <div class="row">
