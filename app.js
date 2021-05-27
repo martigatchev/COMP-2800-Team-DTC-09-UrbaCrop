@@ -53,6 +53,17 @@ app.get("/garden_map.html", (req, res) => {
         res.redirect('/');
     }
 });
+
+// app.post("/gardenMap", (req, res) => {
+//     let application = new applicationInfo({applicantUsername: req.session.username, applicantComment: req.body.comment, gardenName: ??, ownerUsername: ??})
+//     application.save({applicantUsername: req.session.username, applicantComment: req.body.comment, gardenName: ??, ownerUsername: ??})
+//     .then(result => {
+//         console.log(result)
+//         res.redirect('/garden_map.html');
+//     })
+//     .catch(error => console.error(error))
+// })
+
 app.get("/gardener_profile_garden", (req, res) => {
     if(req.session.username) {
         gardenerGardenInfo.find({user: req.session.username}, (err, docs) => {
