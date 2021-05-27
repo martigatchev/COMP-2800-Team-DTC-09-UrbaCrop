@@ -271,9 +271,10 @@ app.get("/applications", (req, res) => {
                 console.log(err);
             }
             else {
-                let arrayOfLandlordInfo = [];          
+                let arrayOfLandlordInfo = [];     
+                let arrayOfGardenInfo = [];     
                 for (let i = 0; i < docs1.length; i++) {
-                    userInfo.findOne({username: docs1[i].applicantUsername}, (err, docs2) => {
+                    userInfo.findOne({username: docs1[i].ownerUsername}, (err, docs2) => {
                         if (err) {
                             console.log(err);
                         }
@@ -282,7 +283,17 @@ app.get("/applications", (req, res) => {
                         }
                     })
                 }
-                setTimeout(function(){res.render("applications", {arrayOfApplicantions: docs1, landlordInfoArray: arrayOfLandlordInfo}); }, 500);
+                for (let i = 0; i < docs1.length; i++) {
+                    landlordGardenInfo.findOne({gardenName: docs1[i].gardenName, owner: docs1[i].ownerUsername}, (err, docs3) => {
+                        if (err) {
+                            console.log(err);
+                        }
+                        else {
+                            arrayOfGardenInfo.push(docs3);
+                        }
+                    })
+                }
+                setTimeout(function(){res.render("applications", {arrayOfApplicantions: docs1, landlordInfoArray: arrayOfLandlordInfo, gardenInfoArray: arrayOfGardenInfo}); }, 500);
             }
         })
     } else {
