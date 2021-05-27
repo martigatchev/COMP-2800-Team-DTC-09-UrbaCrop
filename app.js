@@ -45,7 +45,7 @@ app.get("/about_us", (req, res) => {
         res.redirect('/');
     }
 });
-app.get("/garden_map.html", (req, res) => {
+app.get("/garden_map", (req, res) => {
     if(req.session.username) {
         res.render("garden_map");
     } else {
