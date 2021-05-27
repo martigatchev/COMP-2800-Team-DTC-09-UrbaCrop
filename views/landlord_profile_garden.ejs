@@ -380,53 +380,44 @@
 
             <br>
 
-            <form>
+            <form action="addNewLandlordGarden" method="POST">
 
-
-              <form action="/action_page.php" id="usrform">
-                Name: <input type="text" name="usrname">
-                <input type="submit">
-              </form>
+              Name: <input type="text" name="gardenName">
 
               <br>
               
-              <button>Add a photo</button>
+              Image URL: <input type="text" name="gardenImgURL">
               
               <br>
               <br>
-
-              <form action="/action_page.php">
-                <label for="plants">Location:</label>
-                <select id="plants" name="plants">
-                  <option value="Marpole">Marpole</option>
-                  <option value="Arbutus Ridge">Arbutus Ridge</option>
-                  <option value="Dunbar-Southlands">Dunbar-Southlands</option>
-                  <option value="Grandview-Woodland">Grandview-Woodland</option>
-                  <option value="Hastings-Sunrise">Hastings-Sunrise</option>
-                  <option value="Kensington-Cedar Cottage">Kensington-Cedar Cottage</option>
-                  <option value="Kerrisdale">Kerrisdale</option>
-                  <option value="Killarney">Killarney</option>
-                  <option value="Kitsilano">Kitsilano</option>
-                  <option value="Mount Pleasant">Mount Pleasant</option>
-                  <option value="Oakridge">Oakridge</option>
-                  <option value="Renfrew-Collingwood">Renfrew-Collingwood</option>
-                  <option value="Riley Park">Riley Park</option>
-                  <option value="Shaughnessy">Shaughnessy</option>
-                  <option value="South Cambie">South Cambie</option>
-                  <option value="Strathcona">Strathcona</option>
-                  <option value="Sunset">Sunset</option>
-                  <option value="Victoria-Fraserview">Victoria-Fraserview</option>
-                  <option value="West End">West End</option>
-                  <option value="West Point Grey">West Point Grey</option>
-                </select>
-                <input type="submit" class="btn btn-success dropdown-toggle">
+              
+              <label for="plants">Location:</label>
+              <select id="plants" name="plants">
+                <option value="Marpole">Marpole</option>
+                <option value="Arbutus Ridge">Arbutus Ridge</option>
+                <option value="Dunbar-Southlands">Dunbar-Southlands</option>
+                <option value="Grandview-Woodland">Grandview-Woodland</option>
+                <option value="Hastings-Sunrise">Hastings-Sunrise</option>
+                <option value="Kensington-Cedar Cottage">Kensington-Cedar Cottage</option>
+                <option value="Kerrisdale">Kerrisdale</option>
+                <option value="Killarney">Killarney</option>
+                <option value="Kitsilano">Kitsilano</option>
+                <option value="Mount Pleasant">Mount Pleasant</option>
+                <option value="Oakridge">Oakridge</option>
+                <option value="Renfrew-Collingwood">Renfrew-Collingwood</option>
+                <option value="Riley Park">Riley Park</option>
+                <option value="Shaughnessy">Shaughnessy</option>
+                <option value="South Cambie">South Cambie</option>
+                <option value="Strathcona">Strathcona</option>
+                <option value="Sunset">Sunset</option>
+                <option value="Victoria-Fraserview">Victoria-Fraserview</option>
+                <option value="West End">West End</option>
+                <option value="West Point Grey">West Point Grey</option>
+              </select>
 
               <br>
 
-              <form action="/action_page.php" id="usrform">
-                Address: <input type="text" name="usrname">
-                <input type="submit" class="btn btn-success dropdown-toggle">
-              </form>
+              Address: <input type="text" name="usrname">
 
               <br>
 
@@ -473,10 +464,9 @@
 
               <br>
 
-
               Payment Options:
 
-              <div id="garden_type_indicator">
+              <div id="payment_indicator">
 
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -500,17 +490,13 @@
                 </div>
 
               </div>
-
              
               <br>
 
               <div id="garden_size_indicator">
 
-                <form action="/action_page.php">
-                  <label for="fname">Size:</label> 
-                  <input type="text" id="fname" name="fname"> sq m.
-                  <br>
-                </form>
+                <label for="fname">Size:</label> 
+                <input type="text" id="fname" name="fname"> sq m.
                 
               </div>
 
@@ -520,7 +506,7 @@
 
               <div id="garden_bio_indicator">
 
-                <textarea rows="4" cols="50" name="comment" form="usrform" placeholder="Enter short description here..."></textarea>
+                <textarea rows="4" cols="50" name="comment" placeholder="Enter short description here..."></textarea>
 
               </div>
 
