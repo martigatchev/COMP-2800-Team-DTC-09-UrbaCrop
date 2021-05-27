@@ -29,7 +29,7 @@ app.listen(PORT, function() {
 
 app.get("/", (req, res)=> res.render("login"));
 app.get("/about_us", (req, res)=> res.render("about_us"));
-app.get("/garden_map.html", (req, res)=> res.render("garden_map"));
+app.get("/garden_map", (req, res)=> res.render("garden_map"));
 app.get("/gardener_profile", (req, res)=> res.render("gardener_profile"));
 app.get("/gardener_profile_garden", (req, res)=> res.render("gardener_profile_garden"));
 app.get("/gardener_profile_profile", (req, res)=> res.render("gardener_profile_profile"));
