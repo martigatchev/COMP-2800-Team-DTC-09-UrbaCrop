@@ -129,15 +129,14 @@ app.get("/gardener_profile_profile", (req, res) => {
     }
 });
 
-// app.get("/landlord_profile_garden", (req, res) => {
-//     if(req.session.username) {
-//         console.log(req.session.username)
-//         res.render("landlord_profile_garden")
-//     } else {
-//         res.redirect('/');
-//     }
-// });
 
+app.get("/landlord_profile_profile", (req, res) => {
+    if(req.session.username) {
+        res.render("landlord_profile_profile", {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL})
+    } else {
+        res.redirect('/');
+    }
+});
 
 
 app.get("/landlord_profile_garden", (req, res) => {
