@@ -264,6 +264,32 @@ app.get("/applicants", (req, res) => {
     }
 })
 
+app.get("/applications", (req, res) => {
+    if(req.session.username) {
+        applicationInfo.find({applicantUsername: req.session.username}, (err, docs1) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                let arrayOfLandlordInfo = [];          
+                for (let i = 0; i < docs1.length; i++) {
+                    userInfo.findOne({username: docs1[i].applicantUsername}, (err, docs2) => {
+                        if (err) {
+                            console.log(err);
+                        }
+                        else {
+                            arrayOfLandlordInfo.push(docs2);
+                        }
+                    })
+                }
+                setTimeout(function(){res.render("applications", {arrayOfApplicantions: docs1, landlordInfoArray: arrayOfLandlordInfo}); }, 500);
+            }
+        })
+    } else {
+        res.redirect('/');
+    }
+})
+
 
 app.get("/logout", (req, res) => {
     req.session.destroy(() => res.redirect('/'));

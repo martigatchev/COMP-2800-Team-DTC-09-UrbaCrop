@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Applicants - UrbaCrop</title>
+    <title>My Applications - UrbaCrop</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -85,23 +85,23 @@
           </button>
           <div class="clearfix"></div>
           
-          <!-- Modal -->
+          <!--Filter Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Filter Applicants</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Filter Applications</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <form action="/applicants" method="POST">                
                     <div class="mb-3">
-                      <label for="FilterByApplicantsLastName" class="form-label">Applicant's Last Name:</label>
-                      <input type="text" class="form-control" id="FilterByApplicantsLastName" name="applicantLastName">
+                      <label for="FilterByLandlordLastName" class="form-label">Landlord's Last Name:</label>
+                      <input type="text" class="form-control" id="FilterByLandlordLastName" name="FilterByLandlordLastName">
                     </div>
                     <div class="mb-3">
-                      <label for="FilterByApplicantsRating" class="form-label">Minimum Rating:</label>
-                      <input type="range" class="form-range" min="0" max="5" step="0.5" id="FilterByApplicantsRating" name="applicantsRating">
+                      <label for="FilterByLandlordRating" class="form-label">Minimum Rating:</label>
+                      <input type="range" class="form-range" min="0" max="5" step="0.5" id="FilterByLandlordRating" name="applicantsRating">
                     </div>
                     <div class="btn-group" role="group" aria-label="FilterButtons">
                       <button type="button" class="btn btn-danger">Reset</button>
@@ -119,7 +119,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Gardener's Username</th>
+                    <th scope="col">Landlord's Username</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Rating (?/5)</th>
@@ -128,14 +128,14 @@
             </thead>
             <tbody>
               <% for (let i = 0; i < arrayOfApplicantions.length; i++) { %>
-                <% let dataTarget = "#" + arrayOfApplicantions[i].applicantUsername %>                  
+                <% let dataTarget = "#" + arrayOfApplicantions[i].ownerUsername %>                  
                   
                  <tr>
-                    <th scope="row"><button class="applicantRowBtn" type="button" data-bs-toggle="modal" data-bs-target=<%= dataTarget %>><%= i + 1 %></button></th>
-                    <td><%= arrayOfApplicantions[i].applicantUsername %></td>
-                    <td><%= applicantInfoArray[i].lastName %></td>
-                    <td><%= applicantInfoArray[i].firstName %></td>
-                    <td><%= applicantInfoArray[i].rating %></td>
+                    <th scope="row"><button class="applicationRowBtn" type="button" data-bs-toggle="modal" data-bs-target=<%= dataTarget %>><%= i + 1 %></button></th>
+                    <td><%= arrayOfApplicantions[i].ownerUsername %></td>
+                    <td><%= landlordInfoArray[i].lastName %></td>
+                    <td><%= landlordInfoArray[i].firstName %></td>
+                    <td><%= landlordInfoArray[i].rating %></td>
                     <td><%= arrayOfApplicantions[i].gardenName %></td>
                   
                 </tr>             
@@ -145,12 +145,12 @@
       </div>
       <% for (let i = 0; i < arrayOfApplicantions.length; i++) { %>
         <!-- Applicants View Modal -->
-        <div class="modal fade" id=<%= arrayOfApplicantions[i].applicantUsername %> tabindex="-1" role="dialog" aria-labelledby="viewApplicant"
+        <div class="modal fade" id=<%= arrayOfApplicantions[i].ownerUsername %> tabindex="-1" role="dialog" aria-labelledby="viewApplicant"
           aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title" id="applicantsModelTitle"><%= applicantInfoArray[i].firstName %> <%= applicantInfoArray[i].lastName %></h4>
+                <h4 class="modal-title" id="applicationModelTitle"><%= arrayOfApplicantions[i].gardenName %></h4>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -161,33 +161,35 @@
               <div class="modal-body">
 
                 <div class="mb-3">
-                  <% if (applicantInfoArray[i].imgURL == '') { %>
+                  <% if (landlordInfoArray[i].imgURL == '') { %>
                   <img src="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" alt="DefaultIMG" width="100%" class="rounded-3">
                 <% } 
                 else { %>
-                  <img src=<%= applicantInfoArray[i].imgURL %> alt=<%= applicantInfoArray[i].username %> width="100%" class="rounded-3>
+                  <img src=<%= landlordInfoArray[i].imgURL %> alt=<%= landlordInfoArray[i].username %> width="100%" class="rounded-3">
                 <%} %>
                 </div>
                   
                 <div class="mb-3 p-2 rounded" style="background-color: #e2efdd;">
                   <div class="mb-1 text-center">
-                    <h4>Applicant Information</h4>
+                    <h4>Landlord's Information</h4>
                   </div>                  
-                  <p id="username" class="mb-1"><b>Username: </b><%= arrayOfApplicantions[i].applicantUsername %></p>
-                  <p id="rating" class="mb-1"><b>Rating: </b><%= applicantInfoArray[i].rating %></p>
-                  <p id="numOfProjects" class="mb-1"><b>Number of Projects: </b><%= applicantInfoArray[i].numOfProjects %></p>
-                  <p id="location" class="mb-1"><b>Address: </b><%= applicantInfoArray[i].address %>, <%= applicantInfoArray[i].city %></p>
-                  <p id="comment" class="mb-1"><b>Comment: </b><%= arrayOfApplicantions[i].applicantComment %></p>
+                  <p id="username" class="mb-1"><b>Username: </b><%= arrayOfApplicantions[i].ownerUsername %></p>
+                  <p id="rating" class="mb-1"><b>Rating: </b><%= landlordInfoArray[i].rating %></p>
+                  <p id="location" class="mb-1"><b>Address: </b><%= landlordInfoArray[i].address %>, <%= landlordInfoArray[i].city %></p>
                 </div>
-
                 <div class="mb-3 p-2 rounded" style="background-color: #e2efdd;">
                   <div class="mb-1 text-center">
-                    <h4>Contact Information</h4>
+                    <h4>Landlord's Contact Information</h4>
                   </div>
-                  <p id="email" class="mb-1"><b>Email: </b><%= applicantInfoArray[i].email %></p>
-                  <p id="phone" class="mb-1"><b>Phone Number: </b><%= applicantInfoArray[i].phoneNumber %></p>
+                  <p id="email" class="mb-1"><b>Email: </b><%= landlordInfoArray[i].email %></p>
+                  <p id="phone" class="mb-1"><b>Phone Number: </b><%= landlordInfoArray[i].phoneNumber %></p>
                 </div>
-            
+                <div class="mb-3 p-2 rounded" style="background-color: #e2efdd;">
+                  <div class="mb-1 text-center">
+                    <h4>Your Comment</h4>
+                  </div> 
+                  <p id="comment" class="mb-1"><b>Comment: </b><%= arrayOfApplicantions[i].applicantComment %></p>
+                </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
