@@ -127,47 +127,48 @@ app.get("/gardener_profile_profile", (req, res) => {
 });
 
 
-// app.get("/landlord_profile_garden", (req, res) => {
-//     if(req.session.username) {
-//         res.render("landlord_profile_garden"
-//         , {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL}
-//         )
-//     } else {
-//         res.redirect('/');
-//     }
-// });
+app.get("/landlord_profile_garden", (req, res) => {
+    if(req.session.username) {
+        res.render("landlord_profile_garden"
+        , {userFirstName: req.session.firstName, userLastName: req.session.lastName, userImg: req.session.imgURL}
+        )
+    } else {
+        res.redirect('/');
+    }
+});
 
 
-// app.post("/addNewLandlordGarden", (req, res) => {
-//     console.log(req.body);
+app.post("/addNewLandlordGarden", (req, res) => {
+    console.log(req.body);
     
-//     landlordGardenInfo.findOne({user: req.session.username, gardenName: req.body.gardenName}, (err, docs) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             console.log('found:' + docs);
-//             if (docs != null)  {
-//                 console.log(docs.user + docs.gardenName + ' already exists in the DB');
-//                 alert('The garden you are trying to add already exists in your gardens!');
-//                 res.redirect('/gardener_profile_profile');
-//             }
-//             else {
-//                 console.log(req.body)
-//                 // let gardenerGarden = new gardenerGardenInfo({user: req.session.username, gardenName: req.body.gardenName, photo: req.body.gardenImgURL,
-//                 // gardenType: plantArray, size: req.body.size, about: req.body.comment});
+    landlordGardenInfo.findOne({user: req.session.username, gardenName: req.body.gardenName}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log('found:' + docs);
+            if (docs != null)  {
+                console.log(docs.user + docs.gardenName + ' already exists in the DB');
+                alert('The garden you are trying to add already exists in your gardens!');
+                res.redirect('/gardener_profile_profile');
+            }
+            else {
+                console.log(req.body)
+                // let landlordGarden = new landlordGardenInfo({user: req.session.username, gardenName: req.body.gardenName, photo: req.body.gardenImgURL,
+                // gardenType: plantArray, size: req.body.size, about: req.body.comment})
+                
 
-//                 // gardenerGarden.save({user: req.session.username, gardenName: req.body.gardenName, photo: req.body.gardenImgURL,
-//                 //     gardenType: plantArray, size: req.body.size, about: req.body.comment})
-//                 .then(result => {
-//                     console.log(result)
-//                     res.redirect('/landlord_profile_garden');
-//                 })
-//                 .catch(error => console.error(error))
-//             }
-//         }
-//     })
-// });
+                // gardenerGarden.save({user: req.session.username, gardenName: req.body.gardenName, photo: req.body.gardenImgURL,
+                //     gardenType: plantArray, size: req.body.size, about: req.body.comment})
+                .then(result => {
+                    console.log(result)
+                    res.redirect('/landlord_profile_garden');
+                })
+                .catch(error => console.error(error))
+            }
+        }
+    })
+});
 
 app.get("/policies", (req, res) => {
     if(req.session.username) {

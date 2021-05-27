@@ -42,7 +42,7 @@
           <img id="topnav-logo" class="navbar-brand" src="images/leaf_logo.svg" alt="Green leaf logo">
         </button>
       </div>
-      
+
     </div>
   </nav>
 
@@ -99,443 +99,454 @@
       <br>
 
       <div class="profile_picture" id="ani_test_image">
-        <% if (userImg == "") {
-          userImg = "https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg"
-        } %>
-        <img src=<%= userImg %> alt="profile picture" width="150" height="150">
+        <% if (userImg=="" ) { userImg="https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg" }
+          %>
+          <img src=<%=userImg %> alt="profile picture" width="150" height="150">
 
-      <br>
-      <br>
+          <br>
+          <br>
 
-      <div id="profile_name">
-        <h4 id="profile_name_title">
-          <%= userFirstName %> <%= userLastName %>
-        </h4>
-        <h5 id="profile_name_type">
-          Gardener
-        </h5>
+          <div id="profile_name">
+            <h4 id="profile_name_title">
+              <%= userFirstName %>
+                <%= userLastName %>
+            </h4>
+            <h5 id="profile_name_type">
+              Gardener
+            </h5>
+          </div>
+
+          <br>
+
+          <div class="container-fluid" id="tab_grid">
+            <div class="row">
+              <div class="col tab_col">
+                <div class="tab_col_content">
+                  <input type="button" class="profile_button" onclick="location.href='./gardener_profile_profile';"
+                    value="Profile" />
+                </div>
+              </div>
+              <div class="col tab_col">
+                <div class="tab_col_content">
+                  <input type="button" class="profile_button" onclick="location.href='./gardener_profile_garden';"
+                    value="Gardens" />
+                </div>
+                <div class="selection_rectangle"></div>
+              </div>
+              <div class="col tab_col">
+                <div class="tab_col_content">
+                  <button class="profile_button">Reviews</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
       </div>
 
       <br>
+      <br>
 
-      <div class="container-fluid" id="tab_grid">
-        <div class="row">
-          <div class="col tab_col">
-            <div class="tab_col_content">
-              <input type="button" class="profile_button" onclick="location.href='./gardener_profile_profile';"
-                value="Profile" />
-            </div>
-          </div>
-          <div class="col tab_col">
-            <div class="tab_col_content">
-              <input type="button" class="profile_button" onclick="location.href='./gardener_profile_garden';"
-                value="Gardens" />
-            </div>
-            <div class="selection_rectangle"></div>
-          </div>
-          <div class="col tab_col">
-            <div class="tab_col_content">
-              <button class="profile_button">Reviews</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% for(let i=0; i < gardensArray.length; i++) { %>
+        <div class="card existing_garden_card mb-3">
+          <div class="card-body">
 
+            <h5 class="card-title">
+              <%= gardensArray[i].gardenName %>
+            </h5>
 
-    </div>
+            <% let dataTarget="#" + gardensArray[i].gardenName %>
+              <button class="garden_image_button" type="button" data-toggle="modal" data-target=<%=dataTarget %>>
 
-    <br>
-    <br>
-
-    <% for(let i = 0; i < gardensArray.length; i++) { %>
-    <div class="card existing_garden_card mb-3">
-      <div class="card-body">
-        
-          <h5 class="card-title"><%= gardensArray[i].gardenName %></h5>
-
-          <% let dataTarget = "#" + gardensArray[i].gardenName %>
-          <button class="garden_image_button" type="button" data-toggle="modal" data-target=<%= dataTarget %>>
-
-            <% if (gardensArray[i].photo == '') { %>
-              <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden" width="100%">
-            <% } 
-            else { %>
-              <img src=<%= gardensArray[i].photo %> alt=<%= gardensArray[i].gardenName%> width="100%">
-            <%} %>
+                <% if (gardensArray[i].photo=='' ) { %>
+                  <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden"
+                    width="100%">
+                  <% } else { %>
+                    <img src=<%=gardensArray[i].photo %> alt=<%= gardensArray[i].gardenName%> width="100%">
+                      <%} %>
 
           </div>
         </div>
-      
+
         <!-- Button trigger modal -->
 
         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#existingGarden"> 
           Edit
         </button>-->
 
-    <!-- Existing Garden View Modal -->
-    <div class="modal fade" id=<%= gardensArray[i].gardenName %> tabindex="-1" role="dialog" aria-labelledby="viewGarden"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="existingGardenTitle"><%= gardensArray[i].gardenName %></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+        <!-- Existing Garden View Modal -->
+        <div class="modal fade" id=<%=gardensArray[i].gardenName %> tabindex="-1" role="dialog"
+          aria-labelledby="viewGarden"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="existingGardenTitle">
+                  <%= gardensArray[i].gardenName %>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
 
-          <!-- MODAL BODY -->
+              <!-- MODAL BODY -->
 
-          <div class="modal-body">
+              <div class="modal-body">
 
-              <% if (gardensArray[i].photo == '') { %>
-              <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden" width="100%">
-            <% } 
-            else { %>
-              <img src=<%= gardensArray[i].photo %> alt=<%= gardensArray[i].gardenName%> width="100%">
-            <%} %>
+                <% if (gardensArray[i].photo=='' ) { %>
+                  <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden"
+                    width="100%">
+                  <% } else { %>
+                    <img src=<%=gardensArray[i].photo %> alt=<%= gardensArray[i].gardenName%> width="100%">
+                      <%} %>
 
-              <br>
-              <br>
+                        <br>
+                        <br>
 
-              Garden type:
+                        Garden type:
 
-              <div id="garden_type_indicator">
+                        <div id="garden_type_indicator">
 
-                <ul>
-                  <% for (let j = 0; j < gardensArray[i].gardenType.length; j++) { %>
-                  <li>
-                    <%=gardensArray[i].gardenType[j] %>
-                  </li>
-                  <% } %>
-                </ul>
+                          <ul>
+                            <% for (let j=0; j < gardensArray[i].gardenType.length; j++) { %>
+                              <li>
+                                <%=gardensArray[i].gardenType[j] %>
+                              </li>
+                              <% } %>
+                          </ul>
+
+                        </div>
+
+                        <div id="garden_size_indicator">
+
+                          Size: <%= gardensArray[i].size %>
+
+                        </div>
+
+                        <br>
+
+                        <b>About the garden:</b>
+
+                        <div id="garden_bio_indicator">
+
+                          <%= gardensArray[i].about %>
+
+                        </div>
 
               </div>
 
-              <div id="garden_size_indicator">
-
-                Size: <%= gardensArray[i].size %>
-
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
-
-              <br>
-
-              <b>About the garden:</b>
-
-              <div id="garden_bio_indicator">
-
-                <%= gardensArray[i].about %>
-
-              </div>
-
-          </div>
-        
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <% }%>
-
-    <div class="card new_garden_card">
-      <div class="card-body">
-        <h5 class="card-title">Add a new garden</h5>
-        <!-- <p class="card-text">This card will open up and allow to add gardens.</p> -->
-
-        <!-- Button trigger modal -->
-
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newGarden">
-          +
-        </button>
-
-      </div>
-    </div>
-
-    <!-- Existing Garden Edit Modal -->
-    <div class="modal fade" id="existingGarden" tabindex="-1" role="dialog" aria-labelledby="existingGarden"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="existingGardenTitle">Helsinki Garden</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-          <!-- MODAL BODY -->
-
-          <div class="modal-body">
-
-            <br>
-
-            <form>
-
-              <form action="/action_page.php" id="usrform">
-                Name: <input type="text" name="usrname">
-                <input type="submit">
-              </form>
-
-              <br>
-
-              <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden" width="100%">              
-
-              <br>
-              <br>
-
-              <button>Add a photo</button>
-
-              <br>
-              <br>
-
-              Garden type:
-
-              <div id="garden_type_indicator">
-
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Vegetables
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Fruits
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Trees
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Flowers
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Herb
-                  </label>
-                </div>
-
-              </div>
-
-             
-              <br>
-
-              <div id="garden_size_indicator">
-
-                <form action="/action_page.php">
-                  <label for="fname">Size:</label> 
-                  <input type="text" id="fname" name="fname"> sq m.
-                  <br>
-                </form>
-                
-              </div>
-
-              <br>
-
-              About the garden:
-
-              <div id="garden_bio_indicator">
-
-                <textarea rows="4" cols="50" name="comment" form="usrform" placeholder="Enter short description here..."></textarea>
-
-              </div>
-
-              
-              
-        
-            </form>
-
-          </div>
-        
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
+        <% }%>
 
+          <div class="card new_garden_card">
+            <div class="card-body">
+              <h5 class="card-title">Add a new garden</h5>
+              <!-- <p class="card-text">This card will open up and allow to add gardens.</p> -->
 
-    <!-- Add New Garden Modal -->
-    <div class="modal fade" id="newGarden" tabindex="-1" role="dialog" aria-labelledby="newGarden"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Add a new garden</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+              <!-- Button trigger modal -->
 
-          <!-- MODAL BODY -->
-
-          <div class="modal-body">
-
-            <br>
-
-            <form action="/addNewGarden" method="POST">
-
-
-              <!-- <form action="/action_page.php" id="usrform"> -->
-                Garden's Name: <input type="text" name="gardenName" required>
-                <!-- <input type="submit"> -->
-              <!-- </form> -->
-
-              <br>
-
-              <!-- <button>Add a photo</button> -->
-                Image URL: <input type="text" name="gardenImgURL">
-
-
-              <br>
-              <br>
-
-              Garden type:
-
-              <div id="garden_type_indicator">
-
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="vegetables">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Vegetables
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="fruits">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Fruits
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="trees">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Trees
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="flowers">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Flowers
-                  </label>
-                </div>
-  
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="herb">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Herb
-                  </label>
-                </div>
-                
-              </div>
-
-             
-              <br>
-
-              <div id="garden_size_indicator">
-
-                <!-- <form action="/action_page.php"> -->
-                  <label for="fname">Size:</label> 
-                  <input type="number" id="fname" name="size"> sq m.
-                  <br>
-                <!-- </form> -->
-                
-              </div>
-
-              <br>
-
-              About the garden:
-
-              <div id="garden_bio_indicator">
-
-                <textarea rows="4" cols="50" name="comment" placeholder="Enter short description here..."></textarea>
-
-              </div>
-            
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newGarden">
+                +
+              </button>
 
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+
+          <!-- Existing Garden Edit Modal -->
+          <div class="modal fade" id="existingGarden" tabindex="-1" role="dialog" aria-labelledby="existingGarden"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="existingGardenTitle">Helsinki Garden</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <!-- MODAL BODY -->
+
+                <div class="modal-body">
+
+                  <br>
+
+                  <form>
+
+                    <form action="/action_page.php" id="usrform">
+                      Name: <input type="text" name="usrname">
+                      <input type="submit">
+                    </form>
+
+                    <br>
+
+                    <img src="https://live.staticflickr.com/65535/48746588703_cf6c0a8594_b.jpg" alt="Helsinki Garden"
+                      width="100%">
+
+                    <br>
+                    <br>
+
+                    <button>Add a photo</button>
+
+                    <br>
+                    <br>
+
+                    Garden type:
+
+                    <div id="garden_type_indicator">
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Vegetables
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Fruits
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Trees
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Flowers
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Herb
+                        </label>
+                      </div>
+
+                    </div>
+
+
+                    <br>
+
+                    <div id="garden_size_indicator">
+
+                      <form action="/action_page.php">
+                        <label for="fname">Size:</label>
+                        <input type="text" id="fname" name="fname"> sq m.
+                        <br>
+                      </form>
+
+                    </div>
+
+                    <br>
+
+                    About the garden:
+
+                    <div id="garden_bio_indicator">
+
+                      <textarea rows="4" cols="50" name="comment" form="usrform"
+                        placeholder="Enter short description here..."></textarea>
+
+                    </div>
+
+
+
+
+                  </form>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
             </div>
-        </form>
-        </div>
-      </div>
+          </div>
+
+
+
+          <!-- Add New Garden Modal -->
+          <div class="modal fade" id="newGarden" tabindex="-1" role="dialog" aria-labelledby="newGarden"
+            aria-hidden="true">
+
+            <div class="modal-dialog" role="document">
+
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Add a new garden</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <!-- MODAL BODY -->
+
+                <div class="modal-body">
+
+                  <br>
+
+                  <form action="/addNewGarden" method="POST">
+
+
+                    <!-- <form action="/action_page.php" id="usrform"> -->
+                    Garden's Name: <input type="text" name="gardenName" required>
+                    <!-- <input type="submit"> -->
+                    <!-- </form> -->
+
+                    <br>
+
+                    <!-- <button>Add a photo</button> -->
+                    Image URL: <input type="text" name="gardenImgURL">
+
+
+                    <br>
+                    <br>
+
+                    Garden type:
+
+                    <div id="garden_type_indicator">
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="vegetables">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Vegetables
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="fruits">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Fruits
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="trees">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Trees
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="flowers">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Flowers
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="herb">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Herb
+                        </label>
+                      </div>
+
+                    </div>
+
+
+                    <br>
+
+                    <div id="garden_size_indicator">
+
+                      <!-- <form action="/action_page.php"> -->
+                      <label for="fname">Size:</label>
+                      <input type="number" id="fname" name="size"> sq m.
+                      <br>
+                      <!-- </form> -->
+
+                    </div>
+
+                    <br>
+
+                    About the garden:
+
+                    <div id="garden_bio_indicator">
+
+                      <textarea rows="4" cols="50" name="comment"
+                        placeholder="Enter short description here..."></textarea>
+
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
     </div>
 
+    <!-- Bottom Nav Bar -->
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-  </div>
-
-  <!-- Bottom Nav Bar -->
-
-  <div class="container-fluid" id="bottom_grid">
-    <div class="row">
-      <div class="col">
-        <div class="col_content">
-          <img src="images/Home.svg">
-        </div>
-      </div>
-      <div class="col">
-        <a href="garden_map.html">
+    <div class="container-fluid" id="bottom_grid">
+      <div class="row">
+        <div class="col">
           <div class="col_content">
-            <img src="images/Discovery.svg">
+            <img src="images/Home.svg">
           </div>
-        </a>
-      </div>
-      <div class="col">
-        <div class="col_content">
-          <img src="images/Notification.svg">
+        </div>
+        <div class="col">
+          <a href="garden_map.html">
+            <div class="col_content">
+              <img src="images/Discovery.svg">
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <div class="col_content">
+            <img src="images/Notification.svg">
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap JavaScript -->
+    <!-- Bootstrap JavaScript -->
 
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-    crossorigin="anonymous"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+      crossorigin="anonymous"></script>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
 
-  <!-- Custom Javascript -->
-  <script src="./scripts/gardener_profile.js"></script>
+    <!-- Custom Javascript -->
+    <script src="./scripts/gardener_profile.js"></script>
 
 </body>
 

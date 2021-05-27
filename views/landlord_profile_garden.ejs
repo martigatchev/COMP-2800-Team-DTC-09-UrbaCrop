@@ -378,21 +378,20 @@
 
           <div class="modal-body">
 
-            <br>
-
-            <form action="addNewLandlordGarden" method="POST">
+            <form action="/addNewLandlordGarden" method="POST">
 
               Name: <input type="text" name="gardenName">
 
               <br>
+              <br>
               
-              Image URL: <input type="text" name="gardenImgURL">
+              Image URL: <input type="text" name="photo">
               
               <br>
               <br>
               
-              <label for="plants">Location:</label>
-              <select id="plants" name="plants">
+              <label for="location">Location:</label>
+              <select id="location" name="location">
                 <option value="Marpole">Marpole</option>
                 <option value="Arbutus Ridge">Arbutus Ridge</option>
                 <option value="Dunbar-Southlands">Dunbar-Southlands</option>
@@ -416,9 +415,11 @@
               </select>
 
               <br>
+              <br>
 
-              Address: <input type="text" name="usrname">
+              Address: <input type="text" name="address">
 
+              <br>
               <br>
 
               Plant preferences:
@@ -426,35 +427,35 @@
               <div id="garden_type_indicator">
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  name="vegetables">
                   <label class="form-check-label" for="defaultCheck1">
                     Vegetables
                   </label>
                 </div>
   
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  name="fruits">
                   <label class="form-check-label" for="defaultCheck1">
                     Fruits
                   </label>
                 </div>
   
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  name="trees">
                   <label class="form-check-label" for="defaultCheck1">
                     Trees
                   </label>
                 </div>
   
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  name="flowers">
                   <label class="form-check-label" for="defaultCheck1">
                     Flowers
                   </label>
                 </div>
   
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  name="herb">
                   <label class="form-check-label" for="defaultCheck1">
                     Herb
                   </label>
@@ -469,21 +470,21 @@
               <div id="payment_indicator">
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  name="cropShare">
                   <label class="form-check-label" for="defaultCheck1">
                     Crop Share
                   </label>
                 </div>
   
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  name="rent">
                   <label class="form-check-label" for="defaultCheck1">
                     Rent
                   </label>
                 </div>
   
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"  name="volunteer">
                   <label class="form-check-label" for="defaultCheck1">
                     Volunteer
                   </label>
@@ -496,7 +497,7 @@
               <div id="garden_size_indicator">
 
                 <label for="fname">Size:</label> 
-                <input type="text" id="fname" name="fname"> sq m.
+                <input type="text" id="size" name="size"> sq m.
                 
               </div>
 
@@ -506,19 +507,17 @@
 
               <div id="garden_bio_indicator">
 
-                <textarea rows="4" cols="50" name="comment" placeholder="Enter short description here..."></textarea>
+                <textarea rows="4" cols="50" name="about" placeholder="Enter short description here..."></textarea>
 
               </div>
 
-              
-              
-        
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+
             </form>
 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
