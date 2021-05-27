@@ -13,7 +13,8 @@ let userInfoSchema = new Scheme( {
     postalCode: String,
     address: String,
     signupCity: String,
-    view: String
+    view: String,
+    imgURL: String
 });
 
 module.exports = mongooose.model('userInfo', userInfoSchema);
