@@ -78,6 +78,8 @@ Also place
 just before your closing body tag.
 
 ## Section 3 - API keys
+We used the Google Maps 3rd party API.
+
 
 
 ## Section 4 - Installation order and location
