@@ -39,9 +39,17 @@ app.listen(PORT, function() {
 });
 
 app.get("/about_us", (req, res) => {
-    if(req.session.username) {
-        res.render("about_us");
-    } else {
+    if(req.session.view) {
+        if(req.session.view == 'gardener') {
+            res.render('about_us', {sideNavOption1: 'Applications', sideNavOption1URL: '/applications', secondOptionImg: 'Discovery',
+            bottomNavFirstOptionURL: '/gardener_profile_profile', bottomNavSecondOptionURL: '/garden_map', bottomNavThirdOptionURL: '/gardener_social'});
+        }
+        else {
+            res.render('about_us', {sideNavOption1: 'Applicants', sideNavOption1URL: '/applicants', secondOptionImg: 'Search',
+            bottomNavFirstOptionURL: '/landlord_profile_profile', bottomNavSecondOptionURL: '/gardeners_list', bottomNavThirdOptionURL: '/landlord_social'});
+        }        
+    }
+    else {
         res.redirect('/');
     }
 });
@@ -254,9 +262,17 @@ app.get("/landlord_social", (req, res) => {
 
 
 app.get("/policies", (req, res) => {
-    if(req.session.username) {
-        res.render("policy_page")
-    } else {
+    if(req.session.view) {
+        if(req.session.view == 'gardener') {
+            res.render('policy_page', {sideNavOption1: 'Applications', sideNavOption1URL: '/applications', secondOptionImg: 'Discovery',
+            bottomNavFirstOptionURL: '/gardener_profile_profile', bottomNavSecondOptionURL: '/garden_map', bottomNavThirdOptionURL: '/gardener_social'});
+        }
+        else {
+            res.render('policy_page', {sideNavOption1: 'Applicants', sideNavOption1URL: '/applicants', secondOptionImg: 'Search',
+            bottomNavFirstOptionURL: '/landlord_profile_profile', bottomNavSecondOptionURL: '/gardeners_list', bottomNavThirdOptionURL: '/landlord_social'});
+        }        
+    }
+    else {
         res.redirect('/');
     }
 });
@@ -365,7 +381,7 @@ app.post("/", (req, res) => {
                         res.redirect('/gardener_profile_profile');
                     }
                     else {
-                        res.redirect('/gardeners_list');
+                        res.redirect('/landlord_profile_profile');
                     }
                 }
                 else {
@@ -449,5 +465,15 @@ app.get("/logout", (req, res) => {
 
 // The next app.use should be the last line of code on this page.
 app.use(function (req, res) {
-    res.status(404).render('404error.ejs');
+    if(req.session.view) {
+        if(req.session.view == 'gardener') {
+            res.status(404).render('404error.ejs', {profileURL: '/gardener_profile_profile', sideNavOption1: 'Applications', sideNavOption1URL: '/applications'});
+        }
+        else {
+            res.status(404).render('404error.ejs', {profileURL: '/landlord_profile_profile', sideNavOption1: 'Applicants', sideNavOption1URL: '/applicants'});
+        }        
+    }
+    else {
+        res.redirect('/');
+    }
 });

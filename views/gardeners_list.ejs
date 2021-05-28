@@ -44,21 +44,20 @@
                 </div>
                 <div class="modal-body">
                   <form action="/gardeners_list" method="POST">                
-                    <!--<div class="mb-3">
-                      <label for="FilterByGardenerFirstName" class="form-label">Gardener's First Name:</label>
-                      <input type="text" class="form-control" id="FilterByGardenerFirstName" name="gardenerFirstName">
-                    </div>-->
+                    
                     <div class="mb-3">
                       <label for="FilterByGardenerLastName" class="form-label">Gardener's Last Name:</label>
                       <input type="text" class="form-control" id="FilterByGardenerLastName" name="gardenerLastName">
                     </div>
                     <div class="mb-3">
                       <label for="FilterByGardenerRating" class="form-label">Minimum Rating:</label>
-                      <input type="range" class="form-range" min="0" max="5" step="0.5" id="FilterByGardenerRating" name="gardenerRating">
+                      <input type="range" class="form-range" min="0" max="5" step="0.5" id="FilterByGardenerRating" name="gardenerRating" value="0" oninput="this.nextElementSibling.value = this.value">
+                      <output>0</output>
                     </div>
                     <div class="mb-3">
                       <label for="FilterByGardenerNumProjects" class="form-label">Minimum Number of Projects:</label>
-                      <input type="range" class="form-range" min="0" max="10" step="1" id="FilterByGardenerNumProjects" name="gardenerNumOfProjects">
+                      <input type="range" class="form-range" min="0" max="10" step="1" id="FilterByGardenerNumProjects" name="gardenerNumOfProjects" value="0" oninput="this.nextElementSibling.value = this.value">
+                      <output>0</output>
                     </div>
                     <div class="btn-group" role="group" aria-label="FilterButtons">
                       <button type="button" class="btn btn-danger">Reset</button>
