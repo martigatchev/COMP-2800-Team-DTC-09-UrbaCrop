@@ -5,6 +5,10 @@ body {
   
 }
 
+a:link {
+  text-decoration: none;
+}
+
 #main_title {
   text-align: center;
   padding: 3%;
