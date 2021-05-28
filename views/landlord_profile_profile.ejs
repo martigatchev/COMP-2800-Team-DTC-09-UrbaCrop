@@ -88,18 +88,8 @@
     <div class="card">
         <div class="card-body">
           <h5 class="card-title">Contact Info</h5>
-          <p class="card-text">This card will open up and have contact info here.</p>
+          <p class="card-text">Click here to edit your contact info.</p>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ContactInfoModal">
-            Edit
-          </button>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Plant Options:</h5>
-          <p class="card-text">This card will open up and have all plant options here.</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlantInfoModal">
             Edit
           </button>
         </div>
@@ -136,26 +126,35 @@
             <form>
               <div>
                 First Name: 
-                <button>Edit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
               </div>
+
+              <br>
+
               <div>
                 Last Name: 
-                <button>Edit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
               </div>
+
+              <br>
+
               <div>
                 Email Address: 
-                <button>Edit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
               </div>
+
+              <br>
+
               <div>
                 Phone Number: 
-                <button>Edit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
               </div>
 
               <br>
 
               <div>
                 Social Links: 
-                <button>Edit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
               </div>
 
               <br>
@@ -164,14 +163,9 @@
 
             Bio:
 
-            <button>Edit</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
 
-            <form action="/action_page.php" id="about_bio">
-              <textarea rows="4" cols="50" name="comment" form="about_bio" placeholder="Enter text here..."></textarea>
-              <input type="submit">
-            </form>
             <br>
-            
 
           </div>
           <div class="modal-footer">
@@ -183,100 +177,7 @@
     </div>
 
 
-  <!-- Plant Info Modal -->
-  <div class="modal fade" id="PlantInfoModal" tabindex="-1" role="dialog" aria-labelledby="PlantInfoModal"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Plant Info</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      
-      <!-- MODAL BODY -->
 
-      <div class="modal-body">
-        
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Plant</h5>
-              <p class="card-text">This card will contain plant info.</p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ContactInfoModal">
-                Edit
-              </button>
-            </div>
-          </div>
-
-          <br>
-
-          <button>Add more plants</button>
-
-          <br>
-          <br>
-
-          <div class="plant_options">
-
-            <form action="/action_page.php">
-              <label for="plants">Choose a plant:</label>
-              <select id="plants" name="plants">
-                <option value="Apple">Apple</option>
-                <option value="Beets">Beets</option>
-                <option value="Bell Peppers">Bell Peppers</option>
-                <option value="Blackberries">Blackberries</option>
-                <option value="Cabbage">Cabbage</option>
-                <option value="Carrots">Carrots</option>
-                <option value="Chives">Chives</option>
-                <option value="Garlic">Garlic</option>
-                <option value="Gooseberry">Gooseberry</option>
-                <option value="Grape">Grape</option>
-                <option value="Green Beans">Green Beans</option>
-                <option value="Kale">Kale</option>
-                <option value="Lettuce">Lettuce</option>
-                <option value="Onions">Onions</option>
-                <option value="Pear">Pear</option>
-                <option value="Potato">Potato</option>
-                <option value="Radishes">Radishes</option>
-                <option value="Raspberry">Raspberry</option>
-                <option value="Rhubarb">Rhubarb</option>
-                <option value="Strawberries">Strawberries</option>
-                <option value="Tomatoes">Tomatoes</option>
-                <option value="Squash">Squash</option>
-                <option value="Zucchini">Zucchini</option>
-              </select>
-              <input type="submit" class="btn btn-success dropdown-toggle">
-  
-              <br>
-  
-              Or
-  
-              <br>
-  
-              <form action="/action_page.php">
-                <label for="custon_plant">Input your own plant:</label>
-                <input type="text" id="custon_plant" name="custon_plant">
-                <input type="submit" class="btn btn-success dropdown-toggle">
-              </form>
-
-          </div>
-
-          
-
-            
-
-
-        
-          
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
   <!-- Bottom Nav Bar -->
 
