@@ -117,7 +117,7 @@ a:link {
     color: gray;
 }
 
-#tab_section img {
+.profile_pic_img {
     border-radius: 100px;
 }
 

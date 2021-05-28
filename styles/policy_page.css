@@ -147,3 +147,7 @@ button.btn:hover {
 .menu-option img {
   padding-right: 15px;
 }
+
+.col:hover {
+  background-color: #bcd4b6;
+}

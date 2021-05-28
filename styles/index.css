@@ -80,3 +80,7 @@
 .menu-option img {
     padding-right: 5%;
 }
+
+.col:hover {
+    background-color: #bcd4b6;
+}
