@@ -39,9 +39,15 @@ app.listen(PORT, function() {
 });
 
 app.get("/about_us", (req, res) => {
-    if(req.session.username) {
-        res.render("about_us");
-    } else {
+    if(req.session.view) {
+        if(req.session.view == 'gardener') {
+            res.status(404).render('about_us', {profileURL: '/gardener_profile_profile', sideNavOption1: 'Applications', sideNavOption1URL: '/applications'});
+        }
+        else {
+            res.status(404).render('about_us', {profileURL: '/landlord_profile_profile', sideNavOption1: 'Applicants', sideNavOption1URL: '/applicants'});
+        }        
+    }
+    else {
         res.redirect('/');
     }
 });

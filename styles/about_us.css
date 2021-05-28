@@ -1,6 +1,11 @@
 /* CSS for swipe • swipe • collection.html */
 
 
+/* Hidden Nav */
+a:link {
+    text-decoration: none;
+  }
+
 
 /* ----- WEBPAGE ----- */
 
