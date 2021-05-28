@@ -9,7 +9,7 @@ var buttonCounter = 1
 logo_button.addEventListener('click', function () {
 
    console.log(buttonCounter)
-   
+
 
    var animation_div = document.getElementById('animation_div')
    var animation_image = document.getElementById('ani_test_image')
@@ -41,7 +41,7 @@ logo_button.addEventListener('click', function () {
       // animation_image.style.animationPlayState = "paused";
       // animation_class[0].style.animationPlayState = "paused";
       // animation_class[0].style.backgroundColor = "#eef5eb";
-      // profilePicture.setAttribute("src", "https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg") 
+      // profilePicture.setAttribute("src", "https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg")
 
       // for (i = 0; i < button_group.length; i++) {
       //    button_group[i].style.animationPlayState = "paused";
@@ -50,8 +50,8 @@ logo_button.addEventListener('click', function () {
    } else {
       buttonCounter ++
    }
-    
-    
+
+
 
 
    //  if( $("#animation_div").css('display') == 'block') {
@@ -69,11 +69,11 @@ logo_button.addEventListener('click', function () {
    //    animation_image.style.animationPlayState = "paused";
    //    animation_class[0].style.animationPlayState = "paused";
    //    animation_class[0].style.backgroundColor = "#eef5eb";
-   //    profilePicture.setAttribute("src", "https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg") 
+   //    profilePicture.setAttribute("src", "https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg")
    // }
 
    // if( $(".profile_button").css('animation-play-state') == 'paused') {
-      
+
    //    for (i = 0; i < button_group.length; i++) {
    //       button_group[i].style.animationPlayState = "running";
    //       console.log(button_group[i])
@@ -86,5 +86,13 @@ logo_button.addEventListener('click', function () {
    // }
 
   });
+
+function initialize() {
+   var input = document.getElementById('addressSearch');
+   new google.maps.places.Autocomplete(input);
+ }
+
+ google.maps.event.addDomListener(window, 'load', initialize);
+
 
 
