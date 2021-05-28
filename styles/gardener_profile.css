@@ -65,18 +65,18 @@
     }
     25% {
         left: -40%;
-        -webkit-transform: rotateY(0deg); 
+        -webkit-transform: rotateY(0deg);
     }
-    50% { 
+    50% {
         left: 0%;
-        -webkit-transform: rotateY(180deg); 
+        -webkit-transform: rotateY(180deg);
     }
     75% {
         left: 40%;
-        -webkit-transform: rotateY(180deg); 
+        -webkit-transform: rotateY(180deg);
     }
     100% {
-        left: 0%;    
+        left: 0%;
         -webkit-transform: rotateY(0deg);
     }
 }
@@ -94,7 +94,7 @@ a:link {
 }
 
 .profile_picture img {
-    width: 150px; 
+    width: 150px;
     height: 150px;
 }
 

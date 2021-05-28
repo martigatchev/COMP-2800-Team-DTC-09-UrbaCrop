@@ -101,3 +101,8 @@ html {
 #commentsModal {
   z-index: 10000;
 }
+
+#logo_button {
+  background-color: #e2efdd;
+  border: #e2efdd;
+}
