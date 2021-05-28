@@ -163,6 +163,15 @@ a:link {
 
 /* ----- MENU SKELETON ----- */
 
+.offcanvas-header {
+    padding-bottom: 0px;
+}
+
+.offcanvas-body {
+    padding-top: 0px;
+}
+
+
 #bottom_grid {
     background-color: #e2efdd;
     position:fixed;
