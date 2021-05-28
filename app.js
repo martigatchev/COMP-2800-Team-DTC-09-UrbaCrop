@@ -365,7 +365,7 @@ app.post("/", (req, res) => {
                         res.redirect('/gardener_profile_profile');
                     }
                     else {
-                        res.redirect('/gardeners_list');
+                        res.redirect('/landlord_profile_profile');
                     }
                 }
                 else {
@@ -449,5 +449,15 @@ app.get("/logout", (req, res) => {
 
 // The next app.use should be the last line of code on this page.
 app.use(function (req, res) {
-    res.status(404).render('404error.ejs');
+    if(req.session.view) {
+        if(req.session.view == 'gardener') {
+            res.status(404).render('404error.ejs', {profileURL: '/gardener_profile_profile', sideNavOption1: 'Applications', sideNavOption1URL: '/applications'});
+        }
+        else {
+            res.status(404).render('404error.ejs', {profileURL: '/landlord_profile_profile', sideNavOption1: 'Applicants', sideNavOption1URL: '/applicants'});
+        }        
+    }
+    else {
+        res.redirect('/');
+    }
 });
