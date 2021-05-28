@@ -74,7 +74,7 @@
 .menu-option {
     display: flex;
     flex-direction: row;
-    padding-top: 8%;
+    padding-top: 8px;
 }
 
 .menu-option img {
@@ -83,4 +83,12 @@
 
 .col:hover {
     background-color: #bcd4b6;
+}
+
+.offcanvas-header {
+    padding-bottom: 0px;
+}
+
+.offcanvas-body {
+    padding-top: 0px;
 }
