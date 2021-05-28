@@ -17,26 +17,6 @@ function initMap() {
   // Create a <script> tag and set the USGS URL as the source.
   var markers = Array();
   map.data.loadGeoJson('data/community-gardens-and-food-trees.geojson', null, function (results) {
-    /**for (let i = 0; i < results.length; i++) {
-      console.log(results[i]);
-      const coords = results.features[i].geometry.coordinates;
-      const latLng = new google.maps.LatLng(coords[1], coords[0]);
-      let marker = new google.maps.Marker({
-        position: latLng,
-        map: map,
-        clickable: true,
-      });*/
-      /**var markers = features.map(function (feature) {
-        console.log(feature);
-        const coords = feature.coordinates;
-        const latLng = new google.maps.LatLng(coords[1], coords[0]);
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map,
-          clickable: true,
-        });
-        return marker;
-      });*/
       markers = results.map(function (result) {
         if (result.getGeometry() !== null) {
           var marker = new google.maps.Marker({
@@ -72,6 +52,8 @@ function initMap() {
         $(document).ready(function(){
           $("#openCommentsModal").click(function(){
             $("#commentsModal").modal("show");
+            $("#formGardenName").val(parsed_data[i].gardenName);
+            $("#formLandlord").val(parsed_data[i].owner);
           });
         });
       });
