@@ -45,7 +45,15 @@ app.get("/about_us", (req, res) => {
 });
 app.get("/garden_map", (req, res) => {
     if(req.session.username) {
-        res.render("garden_map");
+        landlordGardenInfo.find({}, (err, docs) => {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log(docs);
+                res.render("garden_map", {privateGardens: docs});
+            }
+        })
     } else {
         res.redirect('/');
     }
