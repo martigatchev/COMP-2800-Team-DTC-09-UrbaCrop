@@ -69,15 +69,16 @@ app.get("/garden_map", (req, res) => {
     }
 });
 
-// app.post("/gardenMap", (req, res) => {
-//     let application = new applicationInfo({applicantUsername: req.session.username, applicantComment: req.body.comment, gardenName: ??, ownerUsername: ??})
-//     application.save({applicantUsername: req.session.username, applicantComment: req.body.comment, gardenName: ??, ownerUsername: ??})
-//     .then(result => {
-//         console.log(result)
-//         res.redirect('/garden_map.html');
-//     })
-//     .catch(error => console.error(error))
-// })
+app.post("/gardenMap", (req, res) => {
+
+    let application = new applicationInfo({applicantUsername: req.session.username, applicantComment: req.body.comment, gardenName: req.body.name, ownerUsername: req.body.landlord})
+    application.save({applicantUsername: req.session.username, applicantComment: req.body.comment, gardenName: req.body.name, ownerUsername: req.body.landlord})
+    .then(result => {
+        console.log(result)
+        res.redirect('/garden_map');
+    })
+    .catch(error => console.error(error))
+})
 
 app.get("/gardener_profile_garden", (req, res) => {
     if(req.session.username) {
@@ -412,7 +413,7 @@ app.get("/applicants", (req, res) => {
                         }
                     })
                 }
-                setTimeout(function(){res.render("applicants", {arrayOfApplicantions: docs1, applicantInfoArray: arrayOfApplicantInfo}); }, 500);
+                setTimeout(function(){res.render("applicants", {arrayOfApplicantions: docs1, applicantInfoArray: arrayOfApplicantInfo}); }, 1500);
             }
         })
     } else {

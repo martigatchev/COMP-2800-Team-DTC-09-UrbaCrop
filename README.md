@@ -38,17 +38,17 @@ If you want the version we used (1.26.1) and it is not available in the dropdown
 
 ### Section 1.4 - Other software
 
-UrbaCrop requires ejs to be able to use and render ejs files. We used version 3.1.2. To install that specific version, go to the terminal and run 
+UrbaCrop requires ejs to be able to use and render ejs files. We used version 3.1.2. To install that specific version, go to the terminal and run
 
 npm install ejs@3.1.2
 
 
-UrbaCrop requires express to enable online hosting of the app. We used version 4.17.1. To install that specific version, go to the terminal and run 
+UrbaCrop requires express to enable online hosting of the app. We used version 4.17.1. To install that specific version, go to the terminal and run
 
 npm install express@4.17.1
 
 
-UrbaCrop requires express-session to manage user sessions. express-session is middleware and does not come automatically bundled with express and must be installed seperately. We used version 1.17.2. To install that specific version, go to the terminal and run 
+UrbaCrop requires express-session to manage user sessions. express-session is middleware and does not come automatically bundled with express and must be installed seperately. We used version 1.17.2. To install that specific version, go to the terminal and run
 
 npm install express@1.17.2
 
@@ -73,14 +73,15 @@ Also place
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-  crossorigin="anonymous"></script> 
+  crossorigin="anonymous"></script>
 
 just before your closing body tag.
 
 ## Section 3 - API keys
 We used the Google Maps 3rd party API.
 
-
+Google Maps API is accessed through the bottom <script> tags, so you do no need to do anything.
+But if any error arises, please use: AIzaSyBHNVYypB7hoi1m9sN6zVZ1manCwx81Whc .
 
 ## Section 4 - Installation order and location
 
@@ -88,7 +89,7 @@ Installation order does not matter. For installation location, simply use the de
 
 ## Section 5 - Configuration Instructions
 
-To connect to mongoDBCompass, please ensure the following line of code is in app.js: 
+To connect to mongoDBCompass, please ensure the following line of code is in app.js:
 
 mongodb+srv://userTest:userTestPassword@cluster0.o4dh9.mongodb.net/UserTest?retryWrites=true&w=majority
 
@@ -99,7 +100,7 @@ Should you want to deploy any changes, please email Ryan Odribege at rodribege@m
 
 ## Section 6 - Testing Plan
 
-Please consult the official UrbaCrop testing plan at 
+Please consult the official UrbaCrop testing plan at
 
 https://docs.google.com/spreadsheets/d/16gd4VDKGGMVFIkUrDqRxciQFtwp9ZEmU/edit#gid=1518399296
 
