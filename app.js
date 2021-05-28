@@ -228,6 +228,14 @@ app.post("/addNewLandlordGarden", (req, res) => {
     })
 });
 
+app.get("/gardener_social", (req, res) => {
+    if(req.session.username) {
+        res.render("gardener_social");
+    } else {
+        res.redirect('/');
+    }
+});
+
 app.get("/landlord_social", (req, res) => {
     if(req.session.username) {
         res.render("landlord_social");
