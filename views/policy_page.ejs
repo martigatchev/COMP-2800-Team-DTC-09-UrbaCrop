@@ -31,34 +31,26 @@
         <img src="images/See as list.svg">
       </button>
 
-      <img id="topnav-logo" class="navbar-brand" src="images/leaf_logo.svg" alt="Green leaf logo">
+      <img id="topnav-logo" class="navbar-brand" src="images/urbacrop_logo.png" height="50px" alt="Green leaf logo">
 
     </div>
   </nav>
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">UrbaCrop</h5>
+      <h3 class="offcanvas-title" id="offcanvasExampleLabel">UrbaCrop</h3>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <div class="user-info">
-        <a href="gardener_profile.html">
-          <img id="user-pro-pic" src="https://via.placeholder.com/150" alt="User Profile Picture">
-          <div class="name-title">
-            <h3>Suaveman Jones</h3>
-            <h4>Gardener</h4>
-          </div>
-        </a>
-      </div>
+      
       <div class=quick-nav>
         <div class="menu-option">
             <img src="images/applications.svg" alt="Applications Icon">
-            <a href="#">Your Applications</a>
+            <a href=<%= sideNavOption1URL %>>Your <%= sideNavOption1 %></a>
         </div>
         <div class="menu-option">
-            <img src="images/favorites.svg" alt="Favorites Icon">
-            <a href="#">Your Favorites</a>
+            <img src="images/favorites.svg" alt="Favourites Icon">
+            Your Favourites
         </div>
         <div class="menu-option">
             <img src="images/guidelines.svg" alt="Guidelines Icon">
@@ -66,15 +58,15 @@
         </div>
         <div class="menu-option">
           <img src="images/about_us.svg" alt="About Us Icon">
-          <a href="/about_us">About Us</a>
+          <a href="about_us">About Us</a>
       </div>
         <div class="menu-option">
             <img src="images/settings.svg" alt="Settings Icon">
-            <a href="#">Settings</a>
+            Settings
         </div>
         <div class="menu-option">
             <img src="images/logout.svg" alt="Log out Icon">
-            <a href="#">Log out</a>
+            <a href="/logout">Log out</a>
         </div>
       </div>
     </div>
@@ -159,19 +151,25 @@
     <div class="row">
       <div class="col">
         <div class="col_content">
-          <img src="images/Home.svg">
+            <a href=<%= bottomNavFirstOptionURL %>>
+                <img src="images/userprofile.svg">
+            </a>
         </div>
       </div>
       <div class="col">
-        <a href="garden_map.html">
+        <a href="garden_map.html">  <!-- ????????  -->
           <div class="col_content">
-            <img src="images/Discovery.svg">
+            <a href=<%= bottomNavSecondOptionURL %>>
+                <img src="images/<%= secondOptionImg %>.svg">
+            </a>
           </div>
         </a>
       </div>
       <div class="col">
         <div class="col_content">
-          <img src="images/Notification.svg">
+            <a href=<%= bottomNavThirdOptionURL %>>
+                <img src="images/facebook.svg">
+            </a>
         </div>
       </div>
     </div>
