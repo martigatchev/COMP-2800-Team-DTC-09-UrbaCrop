@@ -40,7 +40,7 @@
         <% if (userImg == "") {
           userImg = "https://i.pinimg.com/originals/04/1e/bf/041ebf5acc320b19a03c903a419f14a2.jpg"
         } %>
-        <img src=<%= userImg %> alt="profile picture" width="150" height="150">
+        <img class="profile_pic_img" src=<%=userImg %> alt="profile picture" width="150" height="150">
       
         <br>
         <br>
@@ -87,7 +87,7 @@
     <div class="card">
         <div class="card-body">
           <h5 class="card-title">Contact Info</h5>
-          <p class="card-text">This card will open up and have contact info here.</p>
+          <p class="card-text">Click here to edit your contact info.</p>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ContactInfoModal">
             Edit
           </button>
@@ -97,7 +97,7 @@
     <div class="card">
         <div class="card-body">
           <h5 class="card-title">Plant Options:</h5>
-          <p class="card-text">This card will open up and have all plant options here.</p>
+          <p class="card-text">Click here to edit your plant options.</p>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PlantInfoModal">
             Edit
           </button>
@@ -135,26 +135,35 @@
             <form>
               <div>
                 First Name: 
-                <button>Edit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
               </div>
+
+              <br>
+
               <div>
                 Last Name: 
-                <button>Edit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
               </div>
+
+              <br>
+
               <div>
                 Email Address: 
-                <button>Edit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
               </div>
+
+              <br>
+
               <div>
                 Phone Number: 
-                <button>Edit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
               </div>
 
               <br>
 
               <div>
                 Social Links: 
-                <button>Edit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
               </div>
 
               <br>
@@ -163,14 +172,9 @@
 
             Bio:
 
-            <button>Edit</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
 
-            <form action="/action_page.php" id="about_bio">
-              <textarea rows="4" cols="50" name="comment" form="about_bio" placeholder="Enter text here..."></textarea>
-              <input type="submit">
-            </form>
             <br>
-            
 
           </div>
           <div class="modal-footer">
@@ -210,7 +214,7 @@
 
           <br>
 
-          <button>Add more plants</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Add More Plants</button>
 
           <br>
           <br>
